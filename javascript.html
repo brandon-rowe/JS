@@ -1,0 +1,64 @@
+<html>
+<head>
+  <title>Wage Calc</title>
+</head>
+<body>
+ 
+Hourly Rate: <input id="hourly_wage">
+Weekly Hours: <input id="weekly_hours">
+<button id="say">Calculate Pay!</button>
+ 
+<hr>
+<div id="result"></div>
+ 
+<script>
+	function calc() 
+	{
+
+   		var hrlyPay = document.getElementById('hourly_wage').value;
+    		var hours = document.getElementById('weekly_hours').value;
+ 		var overtimeHours = hours - 40;
+		var overtimeHrlyPay = hrlyPay * 1.5;
+		var overtimePay = overtimeHours * overtimeHrlyPay;
+		var regularPay = (hrlyPay * 40);
+		var tax = 0.3;
+		var salary;
+
+
+		if (hours > 40)
+		{
+			var pay = regularPay + overtimePay;
+			salary = pay*52;
+			var wageTax = pay * tax;
+			afterTaxes = pay - wageTax
+		}
+		else if (hours <= 40)
+		{
+			pay = 0;
+			regularPay = hrlyPay*hours;
+			salary = regularPay*52;
+			wageTax = regularPay * tax;
+			afterTaxes = regularPay - wageTax
+		}
+
+
+		pay = pay.toFixed(2);
+		regularPay = regularPay.toFixed(2);
+		salary = salary.toFixed(2);
+		afterTaxes = afterTaxes.toFixed(2);
+
+    		var html = 	
+			'Your overtime pay is $' + pay + 
+			'</br> Your regular pay is $' + regularPay + 
+			'</br> Your regular salary is $' + salary +
+			'</br> Your regular pay minus taxes is $' + afterTaxes;
+	
+ 
+    		document.getElementById('result').innerHTML = html;
+	}
+ 
+	document.getElementById('say').addEventListener('click', calc);
+</script>
+ 
+</body>
+</html>
