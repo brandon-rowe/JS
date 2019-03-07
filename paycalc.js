@@ -1,7 +1,7 @@
 function calc() 
 	{
    		var hrlyPay = document.getElementById('hourly_wage').value;
-    		var hours = document.getElementById('weekly_hours').value;
+    	var hours = document.getElementById('weekly_hours').value;
  		var overtimeHours = hours - 40;
 		var overtimeHrlyPay = hrlyPay * 1.5;
 		var overtimePay = overtimeHours * overtimeHrlyPay;
@@ -12,7 +12,7 @@ function calc()
 		if (hours > 40)
 		{
 			var pay = regularPay + overtimePay;
-			salary = pay*52;
+			salary = regularPay*52;
 			var wageTax = pay * tax;
 			afterTaxes = pay - wageTax;
 		}
@@ -26,10 +26,11 @@ function calc()
 		}
 
     		var html = 	
-			'Your overtime pay is $' + pay.toFixed(2) + 
+    		'Your total pay is $' + pay.toFixed(2) + 
+			'</br> Your overtime pay is $' + overtimePay.toFixed(2) + 
 			'</br> Your regular pay is $' + regularPay.toFixed(2) + 
-			'</br> Your regular salary is $' + salary.toFixed(2) +
-			'</br> Your regular pay minus taxes is $' + afterTaxes.toFixed(2);
+			'</br> Your salary is $' + salary.toFixed(2) + ' without overtime calculated ' +
+			'</br> Your pay minus taxes is roughly $' + afterTaxes.toFixed(2);
 	
     		document.getElementById('result').innerHTML = html;
 	}
