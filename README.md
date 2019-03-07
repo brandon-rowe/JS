@@ -1,2 +1,3 @@
-# wages
-Simple wage and salary calculator. Written in JavaScript.
+# Web Development 
+
+<h5>Building full front-end applications from scratch.</h5>
