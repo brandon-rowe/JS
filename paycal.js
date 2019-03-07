@@ -1,36 +1,21 @@
-function calc() 
-	{
-   		var hrlyPay = document.getElementById('hourly_wage').value;
-    		var hours = document.getElementById('weekly_hours').value;
- 		var overtimeHours = hours - 40;
-		var overtimeHrlyPay = hrlyPay * 1.5;
-		var overtimePay = overtimeHours * overtimeHrlyPay;
-		var regularPay = (hrlyPay * 40);
-		var tax = 0.3;
-		var salary;
-
-		if (hours > 40)
-		{
-			var pay = regularPay + overtimePay;
-			salary = pay*52;
-			var wageTax = pay * tax;
-			afterTaxes = pay - wageTax;
-		}
-		else if (hours <= 40)
-		{
-			pay = 0;
-			regularPay = hrlyPay*hours;
-			salary = regularPay*52;
-			wageTax = regularPay * tax;
-			afterTaxes = regularPay - wageTax;
-		}
-
-    		var html = 	
-			'Your overtime pay is $' + pay.toFixed(2) + 
-			'</br> Your regular pay is $' + regularPay.toFixed(2) + 
-			'</br> Your regular salary is $' + salary.toFixed(2) +
-			'</br> Your regular pay minus taxes is $' + afterTaxes.toFixed(2);
 	
-    		document.getElementById('result').innerHTML = html;
+	var hours = 35;
+	var hrlyPay = 20;
+	var overtimeHours = hours - 40;
+	var overtimeHrlyPay = hrlyPay * 1.5;
+	var overtimePay = overtimeHours * overtimeHrlyPay;
+	var regularPay = (hrlyPay * 40);
+	if (hours > 40)
+	{
+		var pay = regularPay + overtimePay;
+		document.write("Your overtime pay is " + pay);
 	}
-	document.getElementById('say').addEventListener('click', calc);
+	else if (hours <= 40)
+	{
+		regularPay = hrlyPay*hours;
+		document.write("Your regular pay is " + regularPay);
+	}
+	else
+	{
+		document.write("Please enter valid numbers.");
+	}
