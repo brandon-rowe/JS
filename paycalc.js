@@ -26,7 +26,7 @@ function calc()
 		}
 
     		var html = 	
-    		'Your total pay is $' + pay.toFixed(2) + 
+    		'</br>Your total pay is $' + pay.toFixed(2) + 
 			'</br> Your overtime pay is $' + overtimePay.toFixed(2) + 
 			'</br> Your regular pay is $' + regularPay.toFixed(2) + 
 			'</br> Your salary is $' + salary.toFixed(2) + ' without overtime calculated ' +
