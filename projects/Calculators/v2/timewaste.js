@@ -1,15 +1,17 @@
 function wastetime() 
 	{
-   		var tb = document.getElementById('total_bill').value;
-    	var tp = document.getElementById('tip_percentage').value;
- 		var percentage = tp / 100;
- 		var total = tb * 1.00;
- 		var tip = percentage * tb;
+   		var task = document.getElementById('waste_task').value;
+    	var minutes = document.getElementById('waste_min').value;
+    	var hours = minutes/60
+ 		var weeklyTime = hours * 7
+ 		var monthlyTime = hours * 30
+ 		var yearlyTime = hours * 365
 
     	var html = 	
-    	'</br>If your total bill was $' + total.toFixed(2) +
-		'</br> Then your tip of ' + tp + ' percent is $' + tip.toFixed(2);
+    	'</br>You waste ' + weeklyTime.toFixed(2) + ' hours per week, ' + 
+    	monthlyTime.toFixed(2) + ' hours per month, and ' + 
+    	yearlyTime.toFixed(2) + ' hours per year. Doing' + task;
 	
-    	document.getElementById('tip').innerHTML = html;
+    	document.getElementById('waste').innerHTML = html;
 	}
-	document.getElementById('som').addEventListener('click', tipCalc);
+	document.getElementById('time').addEventListener('click', wastetime);
