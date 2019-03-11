@@ -10,7 +10,7 @@ function wastetime()
     	var html = 	
     	'</br>You waste ' + weeklyTime.toFixed(2) + ' hours per week, ' + 
     	monthlyTime.toFixed(2) + ' hours per month, and ' + 
-    	yearlyTime.toFixed(2) + ' hours per year. Doing' + task;
+    	yearlyTime.toFixed(2) + ' hours per year on ' + task;
 	
     	document.getElementById('waste').innerHTML = html;
 	}

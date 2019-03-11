@@ -8,7 +8,7 @@ function tipCalc()
 
     	var html = 	
     	'</br>If your total bill was $' + total.toFixed(2) +
-		'</br> Then your tip of ' + tp + ' percent is $' + tip.toFixed(2);
+		'</br> Then your tip of ' + tp + ' percent is $' + tip.toFixed(2)+'</br>';
 	
     	document.getElementById('tip').innerHTML = html;
 	}
