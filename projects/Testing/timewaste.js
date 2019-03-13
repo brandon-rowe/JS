@@ -36,3 +36,14 @@ function productivetime()
         document.getElementById('productive').innerHTML = html;
     }
     document.getElementById('protime').addEventListener('click', productivetime);
+
+function loopPractice()
+{   
+    let thisChar = '#'
+    for (let i=1; i<7; i++)
+    {
+        thisChar = thisChar * i
+        console.log(thisChar)
+    }
+}
+document.getElementById('loop').addEventListener('click', loopPractice);
