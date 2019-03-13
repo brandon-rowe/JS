@@ -43,7 +43,6 @@ function loopPractice()
     for (let i=1; i<7; i++)
     {
         thisChar = thisChar * i
-        console.log(thisChar)
     }
 }
 document.getElementById('loop').addEventListener('click', loopPractice);
