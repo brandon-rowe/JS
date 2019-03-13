@@ -19,6 +19,7 @@ function wastetime()
 
 function productivetime() 
     {
+        let yourName = prompt("Enter your name");
         var task = document.getElementById('pro_task').value;
         var minutes = document.getElementById('pro_min').value;
         var hours = minutes/60
@@ -27,6 +28,7 @@ function productivetime()
         var yearlyTime = hours * 365
 
         var html =  
+        '</br>' + yourName +
         '</br>You spend ' + weeklyTime.toFixed(2) + ' hours per week, ' + 
         monthlyTime.toFixed(2) + ' hours per month, and ' + 
         yearlyTime.toFixed(2) + ' hours per year on ' + task +'. Good Job!';
