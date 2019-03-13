@@ -1,9 +1,4 @@
-<!Doctype HTML>
-	<head>
-		<title>Form Practice with JS</title>
-	</head>
-	<script>
-		const hummus = function(factor)
+const hummus = function(factor)
 {
 	const ingredient = function(amount, unit, name) {
 		let ingredientAmount = amount * factor;
@@ -19,12 +14,3 @@
 	ingredient(2, "tablespoon", "olive oil");
 	ingredient(0.5, "teaspoon", "cumin");
 };
-	</script>
-	<body>
-		<form method="GET" action="example/message.html">
-	  		<p>Name: <input type="text" name="name"></p>
-	  		<p>Message:<br><textarea name="message"></textarea></p>
-	  		<p><button type="submit">Send</button></p>
-		</form>
-	</body>
-</html>
