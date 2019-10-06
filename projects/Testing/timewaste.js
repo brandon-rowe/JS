@@ -37,12 +37,13 @@ function productivetime()
     }
     document.getElementById('protime').addEventListener('click', productivetime);
 
-function loopPractice()
+function loop()
 {   
-    let thisChar = '#'
+    let thisChar = '10'
     for (let i=1; i<7; i++)
     {
         thisChar = thisChar * i
+        console.log(thisChar)
     }
 }
-document.getElementById('loop').addEventListener('click', loopPractice);
+document.getElementById('loop').addEventListener('click', loop);

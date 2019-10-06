@@ -102,6 +102,9 @@ Articles with content that explains various approaches used to build this starte
   * [ieeexplore.ieee.org](https://ieeexplore.ieee.org/abstract/document/5396115)
   * [Sciencedirect.com](https://www.sciencedirect.com/science/article/abs/pii/S0375960107010596)
   * [Sciencedirect.com](https://www.sciencedirect.com/science/article/abs/pii/S0097849398000338)
+  * [LibGuides.com(https://umb.libguides.com/c.php?g=350993&p=2368497)
+
+
 
 
   
