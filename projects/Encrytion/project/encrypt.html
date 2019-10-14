@@ -1,8 +1,11 @@
 <html>
     <head>
-        <title>Caesar Cipher</title>
+        <title>Encryption Testing</title>
+    <link rel="stylesheet" href="static/css/tpb.css">
     </head>
     <body>
+    <!--<div id="fp">-->
+        <h1><a href="#" title="Algorithms"><span>Testing Encryption Algorithms</span></a></h1>
         <br>
         Please enter the string you wish to encrypt: <input id="caesarInp">
         <button id="caesarEncrypt">Caesar</button>
@@ -11,11 +14,31 @@
         <br>
         Please enter the string you wish to encrypt: <input id="sha1Inp">
         <button id="sha1Encrypt">SHA-1</button>
-        <hr>
         <div id="sha1"></div>
+        <hr>
         <br>
+        Please enter the string you wish to encrypt: <input id="sha3Inp">
+        <button id="sha3Encrypt">SHA-3</button>
+        <div id="sha3"></div>
+        <hr>
+        Please enter the string you wish to encrypt: <input id="sha256Inp">
+        <button id="sha256Encrypt">SHA-256</button>
+        <div id="sha256"></div>
+        <hr>
+        Please enter the string you wish to encrypt: <input id="aesInp">
+        <button id="aesEncrypt">AES</button>
+        <div id="aes"></div>
+        <hr>
+        Please enter the string you wish to encrypt: <input id="rsaInp">
+        <button id="rsaEncrypt">RSA</button>
+        <div id="rsa"></div>
+        <hr>
         <script type="text/javascript" src="static/js/caesar.js"></script>
         <script type="text/javascript" src="static/js/sha1.js"></script>
-        
+        <script type="text/javascript" src="static/js/sha3.js"></script>
+        <script type="text/javascript" src="static/js/sha256.js"></script>
+        <script type="text/javascript" src="static/js/aes.js"></script>
+        <script type="text/javascript" src="static/js/rsa.js"></script>
+    <!--</div> -->   
     </body>
 </html>
