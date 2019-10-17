@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <title>Project - Senior Seminar</title>
     <meta name="description" content="Senior Seminar Project - Topic: Encryption">
-    <meta name="keywords" content="encryption standards, encryption, aes, rsa, sha-1, sha-2, sha-3">
-    <meta name="" content="" />
+    <meta name="keywords" content="encryption standards, encryption, aes, rsa, sha-1, sha-256, sha-3">
     <meta name="popwin" content="popwin-verification" />
     <link rel="stylesheet" href="static/css/tpb.css">
 </head>
@@ -16,14 +15,14 @@
     <nav id="navlinks">
         <strong>Encrypted Message</strong> |
         <a href="encrypt.html" title="Browse Encryption Testing">Browse Encryption</a> |
-        <a href="#" title="Recent Encryption Articles">Recent Articles</a> |
-        <a href="#" title="Encryption Grading Metrics">Metrics</a> |
-        <a href="#" title="Statistics of Encryption Hacking">Pass/Fail</a> |
-        <a href="#" title="Results of Testing">Results</a>
+        <a href="articles.html" title="Recent Encryption Articles">Recent Articles</a> |
+        <a href="metrics.html" title="Encryption Grading Metrics">Metrics</a> |
+        <a href="testing.html" title="Statistics of Encryption Hacking">Pass/Fail</a> |
+        <a href="results.html" title="Results of Testing">Results</a>
     </nav>
     <form name="q" method="get" action="/s/">
         <p id="inp">
-            <input name="q" type="search" title="Pirate Search" placeholder="Enter Message to Encrypt" class="https_form" autofocus required >
+            <input name="q" type="search" title="Encrypt_msg" placeholder="Enter Message to Encrypt" class="https_form" autofocus required >
             <span>
                 <a href="#" title="Preferences">Preferences</a>
                 <a href="#" title="Languages">Languages</a>
@@ -34,7 +33,7 @@
             <label title="Audio" accesskey="q"><input name="audio" id="audio" onclick="rmAll();" type="checkbox">AES</label>
             <label title="Video" accesskey="w"><input name="video" id="video" onclick="rmAll();" type="checkbox">RSA</label>
             <label title="Applications" accesskey="e"><input name="apps" id="apps" onclick="rmAll();" type="checkbox">SHA-1</label>
-            <label title="Games" accesskey="r"><input name="games" id="games" onclick="rmAll();" type="checkbox">SHA-2</label>
+            <label title="Games" accesskey="r"><input name="games" id="games" onclick="rmAll();" type="checkbox">SHA-256</label>
             <label title="Other" accesskey="y"><input name="other" id="other" onclick="rmAll();" type="checkbox">SHA-3</label>
         </p>
         <p id="subm">
@@ -49,14 +48,14 @@
 <footer>
     <nav>
 	<a href="#" title="Login">Research</a> |
-	<a href="https://github.com/brandon-rowe/JS/tree/master/projects/Encrytion" title="Register">Github</a> |
-	<a href="https://en.wikipedia.org/wiki/Encryption" title="Select language">Wikipedia</a> |
-	<a href="#" title="About">Testing</a> |
-	<a href="#" title="Blog">Results</a>
+	<a href="https://github.com/brandon-rowe/JS/tree/master/projects/Encrytion" title="Github Files">Github</a> |
+	<a href="https://en.wikipedia.org/wiki/Encryption" title="Encryption Wiki">Wikipedia</a> |
+	<a href="#" title="Testing Hypothesis">Testing</a> |
+	<a href="#" title="Results of Testing">Results</a>
 	<br />
 	 <!--<a href="/contact" title="Contact us">Contact us</a> |-->
-	<a href="#" title="Usage policy">Usage policy</a> |
-    <a href="#" title="Discover TOR">TOR</a> |   
+	<a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode" title="Creative Commons">Usage policy</a> |
+    <a href="https://www.torproject.org/" title="Discover TOR">TOR</a> |   
 
 	<!--<a href="/downloads" title="Downloads">Downloads</a> |-->
 	<a href="#" title="Security Best Practices">Security</a> |
