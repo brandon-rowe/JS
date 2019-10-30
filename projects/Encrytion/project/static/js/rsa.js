@@ -24,8 +24,7 @@ function rsaCipher()
 		}
 
     	var html = 	
-    	'</br>Your shift value was ' + shift + ' and your original message was, ' + 
-    	message + '. Your encrypted message is ' + 
+    	'</br> Your encrypted message is ' + 
     	encryptedMsg;
 	
     	document.getElementById('rsa').innerHTML = html;
