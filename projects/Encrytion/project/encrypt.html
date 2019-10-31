@@ -45,219 +45,200 @@
     <meta name="description" content="Search for and download any torrent from the pirate bay using search query mr robot. Direct download via magnet link."/>
     <meta name="keywords" content="mr robot direct download torrent magnet tpb piratebay search"/>
 </head>
-
-
-
-
     <body>
         <h1><a href="index.html" title="Return Home"><span>Encryption Algorithms</span></a></h1>
         <div id="SearchResults"><div id="content">
-		<div id="main-content">
-
-
-<table id="searchResult">
-	<thead id="tableHead">
-		<tr class="header">
-			<th><a href="#" title="Algorithm Type">Type</a></th>
-			<th><div class="sortby"><a href="#" title="Info">Info</a> (Order by: <a href="/search/mr%20robot/0/3/0" title="Order by Uploaded">Uploaded</a>, <a href="/search/mr%20robot/0/5/0" title="Order by Size">Size</a>, <span style="white-space: nowrap;"><a href="/search/mr%20robot/0/11/0" title="Order by ULed by">ULed by</a></span>, <a href="/search/mr%20robot/0/8/0" title="Order by Seeders">SE</a>, <a href="/search/mr%20robot/0/9/0" title="Order by Leechers">LE</a>)</div><div class="viewswitch"> View: <a href="/switchview.php?view=s">Single</a> / Double&nbsp;</div></th>
-			<th><abbr title="Encryption Algorithm"><a href="#" title="Encrypt">E</a></abbr></th>
-			<th><abbr title="Decryption Algorithm"><a href="#" title="Decrypt">D</a></abbr></th>
-		</tr>
-	</thead>
-	<tr>
-		<td class="vertTh">
-			<center>
-				<a href="/browse/200" title="More from this category">Caesar</a><br />
-				(<a href="/browse/208" title="More from this category">Symmetric</a>)
-			</center>
-		</td>
-		<td>
-<div class="detName">			<a href="#" class="detLink" title="#">Please enter the string you wish to encrypt: </a>
-<input id="caesarInp">
-        <button id="caesarEncrypt">Caesar</button>
-</div>
-		</td>
-		<td align="right">441</td>
-		<td align="right">56</td>
-	</tr>
-	<tr>
-		<td class="vertTh">
-			<center>
-				<a href="/browse/200" title="More from this category">Sha-1</a><br />
-				(<a href="/browse/208" title="More from this category">HD - TV shows</a>)
-			</center>
-		</td>
-		<td>
-<div class="detName">			<a href="#" class="detLink" title="#">Please enter the string you wish to encrypt: </a>
-<input id="sha1Inp">
-        <button id="sha1Encrypt">SHA-1</button>
-</div>
-		</td>
-		<td align="right">431</td>
-		<td align="right">120</td>
-	</tr>
-	<tr class="alt">
-		<td class="vertTh">
-			<center>
-				<a href="/browse/200" title="More from this category">Sha-3</a><br />
-				(<a href="/browse/205" title="More from this category">TV shows</a>)
-			</center>
-		</td>
-		<td>
-<div class="detName">			<a href="#" class="detLink" title="#">Please enter the string you wish to encrypt: </a>
-<input id="sha3Inp">
-        <button id="sha3Encrypt">SHA-3</button>
-</div>
-		</td>
-		<td align="right">431</td>
-		<td align="right">120</td>
-	</tr>
-	<tr class="alt">
-		<td class="vertTh">
-			<center>
-				<a href="/browse/200" title="More from this category">Sha-256</a><br />
-				(<a href="/browse/205" title="More from this category">TV shows</a>)
-			</center>
-		</td>
-		<td>
-<div class="detName">			<a href="#" class="detLink" title="#">Please enter the string you wish to encrypt: </a>
-<input id="sha256Inp">
-        <button id="sha256Encrypt">SHA-256</button>
-</div>
-		</td>
-		<td align="right">431</td>
-		<td align="right">120</td>
-	</tr>
-	<tr class="alt">
-		<td class="vertTh">
-			<center>
-				<a href="/browse/200" title="More from this category">DES</a><br />
-				(<a href="/browse/205" title="More from this category">TV shows</a>)
-			</center>
-		</td>
-		<td>
-<div class="detName">			<a href="#" class="detLink" title="#">Please enter the string you wish to encrypt: </a>
-<input id="aesInp">
-        <button id="aesEncrypt">AES</button>
-</div>
-		</td>
-		<td align="right">431</td>
-		<td align="right">120</td>
-	</tr>
-	<tr class="alt">
-		<td class="vertTh">
-			<center>
-				<a href="/browse/200" title="More from this category">RSA</a><br />
-				(<a href="/browse/205" title="More from this category">Asymmetric</a>)
-			</center>
-		</td>
-		<td>
-<div class="detName">			<a href="#" class="detLink" title="#">Please enter the string you wish to encrypt: </a>
-<input id="rsaInp">
-        <button id="rsaEncrypt">RSA</button>
-</div>
-		</td>
-		<td align="right">431</td>
-		<td align="right">120</td>
-	</tr>
-	<tr class="alt">
-		<td class="vertTh">
-			<center>
-				<a href="/browse/200" title="More from this category">Results</a><br />
-				(<a href="/browse/205" title="More from this category">Caesar Cipher</a>)
-			</center>
-		</td>
-		<td>
-        <div class="detName">			<a href="#" class="detLink" title="#">Caesar Encryption: 
-            <div id="caesar"></div> </a>
-        </div>
-        </td>
-		<td align="right">431</td>
-		<td align="right">120</td>
-	</tr>
-	<tr class="alt">
-		<td class="vertTh">
-			<center>
-				<a href="/browse/200" title="More from this category">Results</a><br />
-				(<a href="/browse/205" title="More from this category">SHA - 1</a>)
-			</center>
-		</td>
-		<td>
-        <div class="detName">			<a href="#" class="detLink" title="#">SHA-1 Encryption: 
-            <div id="sha1"></div> </a>
-        </div>
-        </td>
-		<td align="right">431</td>
-		<td align="right">120</td>
-	</tr>
-	<tr class="alt">
-		<td class="vertTh">
-			<center>
-				<a href="/browse/200" title="More from this category">Results</a><br />
-				(<a href="/browse/205" title="More from this category">SHA - 3</a>)
-			</center>
-		</td>
-		<td>
-        <div class="detName">			<a href="#" class="detLink" title="#">SHA-3 Encryption: 
-            <div id="sha3"></div> </a>
-        </div>
-        </td>
-		<td align="right">431</td>
-		<td align="right">120</td>
-	</tr>
-	<tr class="alt">
-		<td class="vertTh">
-			<center>
-				<a href="/browse/200" title="More from this category">Results</a><br />
-				(<a href="/browse/205" title="More from this category">SHA - 256</a>)
-			</center>
-		</td>
-		<td>
-        <div class="detName">			<a href="#" class="detLink" title="#">SHA-256 Encryption: 
-            <div id="sha256"></div> </a>
-        </div>
-        </td>
-		<td align="right">431</td>
-		<td align="right">120</td>
-	</tr>
-    <tr class="alt">
-		<td class="vertTh">
-			<center>
-				<a href="/browse/200" title="More from this category">Results</a><br />
-				(<a href="/browse/205" title="More from this category">AES</a>)
-			</center>
-		</td>
-		<td>
-        <div class="detName">			<a href="#" class="detLink" title="#">AES Encryption: 
-            <div id="aes"></div> </a>
-        </div>
-        </td>
-		<td align="right">431</td>
-		<td align="right">120</td>
-	</tr>
-	<tr class="alt">
-		<td class="vertTh">
-			<center>
-				<a href="/browse/200" title="More from this category">Results</a><br />
-				(<a href="/browse/205" title="More from this category">RSA1</a>)
-			</center>
-		</td>
-		<td>
-        <div class="detName">			<a href="#" class="detLink" title="#">RSA Encryption: 
-            <div id="rsa"></div> </a>
-        </div>
-        </td>
-		<td align="right">431</td>
-		<td align="right">120</td>
-	</tr>
+		    <div id="main-content">
+                    <table id="searchResult">
+                    	<thead id="tableHead">
+                    		<tr class="header">
+                    			<th><a href="#" title="Algorithm Type">Type</a></th>
+                    			<th><a href="#" title="Info">Info</a></th>
+                    			<th><abbr title="Encryption Algorithm"><a href="#" title="Encrypt">E</a></abbr></th>
+                    			<th><abbr title="Decryption Algorithm"><a href="#" title="Decrypt">D</a></abbr></th>
+                    		</tr>
+                    	</thead>
+                    	<tr>
+                    		<td class="vertTh">
+                    			<center>
+                    				<a href="#" title="">Caesar</a><br />
+                    				(<a href="#" title="">Symmetric</a>)
+                    			</center>
+                    		</td>
+                    		<td>
+                                <div class="detName">Please enter the string you wish to encrypt: <input id="caesarInp"><button id="caesarEncrypt">Caesar</button></div>
+                    		</td>
+                    		<td align="right">441</td>
+                    		<td align="right">56</td>
+                    	</tr>
+                    	<tr class="alt">
+                    		<td class="vertTh">
+                    			<center>
+                    				<a href="#" title="">AES</a><br />
+                    				(<a href="#" title="">Symmetric</a>)
+                    			</center>
+                    		</td>
+                    		<td>
+                                <div class="detName">Please enter the string you wish to encrypt: <input id="aesInp"><button id="aesEncrypt">AES</button></div>
+                    		</td>
+                    		<td align="right">431</td>
+                    		<td align="right">120</td>
+                    	</tr>
+                    	<tr class="alt">
+                    		<td class="vertTh">
+                    			<center>
+                    				<a href="#" title="">RSA</a><br />
+                    				(<a href="#" title="">Asymmetric</a>)
+                    			</center>
+                    		</td>
+                    		<td>
+                                <div class="detName">Please enter the string you wish to encrypt: <input id="rsaInp"><button id="rsaEncrypt">RSA</button></div>
+                    		</td>
+                    		<td align="right">431</td>
+                    		<td align="right">120</td>
+                    	</tr>
+                    	<tr>
+                    		<td class="vertTh">
+                    			<center>
+                    				<a href="#" title="">Sha-1</a><br />
+                    				(<a href="#" title="">Hash Algorithm</a>)
+                    			</center>
+                    		</td>
+                    		<td>
+                                <div class="detName">Please enter the string you wish to hash: <input type="text" name="strex" id="strex"><button type="button" id="cryptstr">SHA-1</button></div>
+                    		</td>
+                    		<td align="right">431</td>
+                    		<td align="right">120</td>
+                    	</tr>
+                    	
+                    		<tr class="alt">
+                    		<td class="vertTh">
+                    			<center>
+                    				<a href="" title="">Sha-256</a><br />
+                    				(<a href="" title="">Hash Algorithm</a>)
+                    			</center>
+                    		</td>
+                    		<td>
+                                <div class="detName">Please enter the string you wish to hash: <input id="sha256Inp"><button id="sha256Encrypt">SHA-2</button></div>
+                    		</td>
+                    		<td align="right">431</td>
+                    		<td align="right">120</td>
+                    	</tr>
+                    	
+                    	<tr class="alt">
+                    		<td class="vertTh">
+                    			<center>
+                    				<a href="" title="">Sha-3</a><br />
+                    				(<a href="" title="">Hash Algorithm</a>)
+                    			</center>
+                    		</td>
+                    		<td>
+                                <div class="detName">Please enter the string you wish to hash: <input id="sha3Inp"><button id="sha3Encrypt">SHA-3</button></div>
+                    		</td>
+                    		<td align="right">431</td>
+                    		<td align="right">120</td>
+                    	</tr>
+                    	<tr class="alt">
+                    		<td class="vertTh">
+                    			<center>
+                    				<a href="" title="">Results</a><br />
+                    				(<a href="" title="">Caesar Cipher</a>)
+                    			</center>
+                    		</td>
+                    		<td>
+                            <div class="detName">Caesar Encryption: 
+                                <div id="caesar"></div>
+                            </div>
+                            </td>
+                    		<td align="right">431</td>
+                    		<td align="right">120</td>
+                    	</tr>
+                        <tr class="alt">
+                    		<td class="vertTh">
+                    			<center>
+                    				<a href="" title="">Results</a><br />
+                    				(<a href="" title="">AES</a>)
+                    			</center>
+                    		</td>
+                    		<td>
+                            <div class="detName">AES Encryption: 
+                                <div id="caesar"></div>
+                            </div>
+                            </td>
+                    		<td align="right">431</td>
+                    		<td align="right">120</td>
+                    	</tr>
+                    	<tr class="alt">
+                    		<td class="vertTh">
+                    			<center>
+                    				<a href="" title="">Results</a><br />
+                    				(<a href="" title="">RSA1</a>)
+                    			</center>
+                    		</td>
+                    		<td>
+                            <div class="detName">RSA Encryption: 
+                                <div id="caesar"></div>
+                            </div>
+                            </td>
+                    		<td align="right">431</td>
+                    		<td align="right">120</td>
+                    	</tr>
+                    	<tr class="alt">
+                    		<td class="vertTh">
+                    			<center>
+                    				<a href="" title="">Results</a><br />
+                    				(<a href="" title="">SHA - 1</a>)
+                    			</center>
+                    		</td>
+                    		<td>
+                            <div class="detName">			<a href="#" class="detLink" title="#">SHA-1 Hash: 
+                                <input type="text" name="strcrypt" id="strcrypt" size="60"> </a>
+                            </div>
+                            </td>
+                    		<td align="right">431</td>
+                    		<td align="right">120</td>
+                    	</tr>
+                    	<tr class="alt">
+                    		<td class="vertTh">
+                    			<center>
+                    				<a href="" title="">Results</a><br />
+                    				(<a href="" title="">SHA - 256</a>)
+                    			</center>
+                    		</td>
+                    		<td>
+                            <div class="detName">			<a href="#" class="detLink" title="#">SHA-2 Hash: 
+                                <input type="text" name="strcrypt" id="strcrypt" size="60"> </a>
+                            </div>
+                            </td>
+                    		<td align="right">431</td>
+                    		<td align="right">120</td>
+                    	</tr>
+                    	<tr class="alt">
+                    		<td class="vertTh">
+                    			<center>
+                    				<a href="" title="">Results</a><br />
+                    				(<a href="" title="">SHA - 3</a>)
+                    			</center>
+                    		</td>
+                    		<td>
+                            <div class="detName">			<a href="#" class="detLink" title="#">SHA-3 Hash: 
+                                <input type="text" name="strcrypt" id="strcrypt" size="60"> </a>
+                            </div>
+                            </td>
+                    		<td align="right">431</td>
+                    		<td align="right">120</td>
+                    	</tr>
+                    </table>
         
 
-        <script type="text/javascript" src="static/js/caesar.js"></script>
-        <script type="text/javascript" src="static/js/sha1.js"></script>
-        <script type="text/javascript" src="static/js/sha3.js"></script>
-        <script type="text/javascript" src="static/js/sha256.js"></script>
-        <script type="text/javascript" src="static/js/aes.js"></script>
-        <script type="text/javascript" src="static/js/rsa.js"></script>
-    </div>
+                    <script type="text/javascript" src="static/js/caesar.js"></script>
+                    <script type="text/javascript" src="static/js/aes.js"></script>
+                    <script type="text/javascript" src="static/js/rsa.js"></script>
+                    <script type="text/javascript" src="static/js/sha1.js"></script>
+                    <script type="text/javascript" src="static/js/sha3.js"></script>
+                    <script type="text/javascript" src="static/js/sha256.js"></script>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

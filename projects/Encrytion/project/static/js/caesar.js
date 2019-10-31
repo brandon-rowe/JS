@@ -23,10 +23,7 @@ function caesarCipher()
     		encryptedMsg += c;
 		}
 
-    	var html = 	
-    	'</br>Your shift value was ' + shift + ' and your original message was "' + 
-    	message + '". Your encrypted message is ' + 
-    	encryptedMsg;
+    	var html = '</br>Shift value: ' + shift + ', Original message: "' + message + '", Encrypted message: ' + encryptedMsg;
 	
     	document.getElementById('caesar').innerHTML = html;
 	}
