@@ -1,102 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Project - Senior Seminar</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" type="text/css" href="static/css/pirate6.css"/>
-    <meta charset="utf-8">
-    <meta name="description" content="Senior Seminar Project - Topic: Encryption">
-    <meta name="keywords" content="encryption standards, encryption, aes, rsa, sha-1, sha-256, sha-3">
-    <meta name="popwin" content="popwin-verification" />
-    <link rel="stylesheet" href="static/css/pirate6.css">
-    <style type="text/css">
-        .searchBox{
-            margin: 6px;
-            width: 300px;
-            vertical-align: middle;
-            padding: 2px;
-            background-image:url('//thepiratebay.org/static/img/icon-https.gif');
-            background-repeat:no-repeat;
-            background-position: right;
-        }
-        .detLink {
-            font-size: 1.2em;
-            font-weight: 400;
-        }
-        .detDesc {
-            color: #4e5456;
-        }
-        .detDesc a:hover {
-            color: #000099;
-            text-decoration: underline;
-        }
-        .sortby {
-            text-align: left;
-            float: left;
-        }
-        .detName {
-            padding-top: 3px;
-            padding-bottom: 2px;
-        }
-        .viewswitch {
-            font-style: normal;
-            float: right;
-            text-align: right;
-            font-weight: normal;
-        }
-    </style>
-    <script src="static/js/jquery.min.js" type="text/javascript"></script>
-    <script src="static/js/tpb.js" type="text/javascript"></script>
-    <script language="javascript" type="text/javascript">if (top.location != self.location) {top.location.replace(self.location);}</script>
-</head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-<body>
-    <div id="header">
-        <form method="get" id="q" action="/s/">
-            <a href="/" class="img"><img src="//thepiratebay.org/static/img/tpblogo_sm_ny.gif" id="TPBlogo" alt="The Pirate Bay" /></a>
-                 <a href="/" title="Search Torrents">Home</a>&nbsp;&nbsp;|&nbsp;
-                 <b><a href="encrypt.html" title="Browse Encryption">Browse Encryption</a></b>&nbsp;&nbsp;|&nbsp;
-                 <a href="sha.html" title="Hash Algorithms">Hash Algorithms</a>&nbsp;&nbsp;|&nbsp;
-                 <a href="articles.html" title="Recent Articles">Recent Articles</a>&nbsp;&nbsp;|&nbsp;
-                 <a href="/presentation" title="Results">Presentation</a>&nbsp;&nbsp;&nbsp;
-            <br /><input type="search" title="Pirate Search" name="q" required placeholder="Search here..." value="Encryption Algorithms" style="background-color:#ffffe0;" class="searchBox"/><input value="Encryption Search" type="submit" class="submitbutton"/><br/>
-            
-            <label title="All" accesskey="a"><input id="all" onclick="setAll();" type="checkbox" checked>All</label>
-            <label title="Audio" accesskey="q"><input name="audio" id="audio" onclick="rmAll();" type="checkbox">AES</label>
-            <label title="Video" accesskey="w"><input name="video" id="video" onclick="rmAll();" type="checkbox">RSA</label>
-            <label title="Applications" accesskey="e"><input name="apps" id="apps" onclick="rmAll();" type="checkbox">SHA-1</label>
-            <label title="Games" accesskey="r"><input name="games" id="games" onclick="rmAll();" type="checkbox">SHA-256</label>
-            <label title="Other" accesskey="y"><input name="other" id="other" onclick="rmAll();" type="checkbox">SHA-3</label>
-            <label for="other" title="Other"><input id="other" name="other" onclick="javascript:rmAll();" type="checkbox"/>Other</label>
-
-            <select id="category" name="category" onchange="javascript:setAll();">
-                <option value="0">All</option>
-                <optgroup label="Education">
-                    <option value="601">E-books</option>
-                    <option value="102">Audio books</option>
-                    <option value="103">Sound clips</option>
-                    <option value="104">Peer Reviews</option>
-                    <option value="199">Other</option>
-                </optgroup>
-                <optgroup label="Applications">
-                    <option value="301">Windows</option>
-                    <option value="302">Mac</option>
-                    <option value="303">UNIX</option>
-                    <option value="304">Handheld</option>
-                    <option value="305">IOS (iPad/iPhone)</option>
-                    <option value="306">Android</option>
-                    <option value="399">Other OS</option>
-                </optgroup>
-            </select>
-
-            <input type="hidden" name="page" value="0" />
-            <input type="hidden" name="orderby" value="99" />
-        </form>
-    </div>
-        <div id="SearchResults"><div id="content">
-		    <div id="main-content">
-                    
-       
+<title>JavaScrypt Encryption and Decryption</title>
+<style type="text/css">
+body{margin-left:15%;margin-right:10%;background-color:#FFF;color:#000}
+a:link,a:visited{background-color:inherit;color:#00c;text-decoration:none}
+a:hover{background-color:#4d4dff;color:#fff}
+a:active{color:red;background-color:#4d4dff}
+a.i:link,a.i:visited,a.i:hover{background-color:inherit;color:inherit;text-decoration:none}
+h3.nav{margin-top:0;margin-bottom:0}
+hr.h{background-color:silver;color:#000}
+img.button{border:0;vertical-align:middle}
+p{text-align:justify}
+p.citation{margin-top:0;text-align:right}
+p.quotation{margin-bottom:0}
+.subsuper sub,.subsuper sup{line-height:0}
+table.footer{width:100%}
+table.footer td.left{width:50%;text-align:left;font-style:italic;vertical-align:top}
+table.footer td.right{width:50%;text-align:right;vertical-align:top}
+table.footer table.buttons{margin-left:auto}
+table.footer table.buttons td{text-align:center}
+ul.pspace li{margin-top:1ex;text-align:justify;width:90%}
+.c{text-align:center}
+</style>
+<meta name="keywords" content="javascrypt, browser, encryption, aes, advanced, system, javascript" />
+<meta name="description" content="JavaScrypt Encryption and Decryption" />
+<meta name="author" content="John Walker" />
+<meta name="robots" content="index" />
 <script type="text/javascript" >
 /* <![CDATA[ */
 'use strict';function externalLinks(){if(!document.getElementsByTagName){return;}
@@ -460,7 +392,7 @@ if(document.getElementById("key").keytype[0].checked){var charA=("A")
 {k+=String.fromCharCode(charA+prng.nextInt(25));}}}else{var hexDigits="0123456789ABCDEF";
 for(i=0;i<64;i++){k+=hexDigits.charAt(prng.nextInt(15));}}
 document.getElementById("key").text.value=k;prng=null;}function Encrypt_text()
-{var v,i;var prefix="#####  Encrypted by master spies\n",suffix="#####  End encrypted message\n";if(document.getElementById("key")
+{var v,i;var prefix="#####  Encrypted: decrypt with http://www.fourmilab.ch/javascrypt/\n",suffix="#####  End encrypted message\n";if(document.getElementById("key")
 .text.value.length==0){alert("Please specify a key with which to encrypt the message.");return;}if(document.getElementById("plain")
 .text.value.length==0){alert("No plain text to encrypt!  Please enter or paste plain text in the field above.");return;}document.getElementById("cipher")
 .text.value="";setKey();addEntropyTime();prng=new AESprng(keyFromEntropy());
@@ -509,261 +441,86 @@ mouseMotionEntropy(60);         // Initialise collection of mouse motion entropy
 }
 // -->
 </script>
-
-
-            <h2>AES Encryption and Decryption</h2>
+</head>
+<body onload="nowLoaded(); externalLinks();">
+<h1>JavaScrypt Encryption and Decryption</h1>
+<hr class="h" />
 <form id="key" action="#" onsubmit="return false;">
-    <h3>Key</h3>
-    <p class="c">
-        <input type="text" name="text" size="80" maxlength="1024" onfocus="ce();" onblur="ce();" onkeydown="ce();" />
-        <br />
-        <label>
-            <input type="radio" checked="checked" name="keytype" />&nbsp;Text</label>
-        &nbsp;
-        <label>
-            <input type="radio" name="keytype" />&nbsp;Hexadecimal</label>
-        &nbsp;
-        <input type="button" value=" Generate " onclick="Generate_key();" /> &nbsp;
-        <input type="button" value=" Clear " onclick="document.getElementById('key').text.value = '';" /> &nbsp;
-        <input type="button" value=" Select " onclick="document.getElementById('key').text.select();" />
-    </p>
+<h3>Key</h3>
+<p class="c">
+<input type="text" name="text" size="80" maxlength="1024"
+style="background-color: rgb(255, 255, 200); color: #000000; font-family: monospace;"
+onfocus="ce();" onblur="ce();" onkeydown="ce();" />
+<br />
+<label><input type="radio" checked="checked"
+name="keytype" />&nbsp;Text</label>
+&nbsp;
+<label><input type="radio" name="keytype" />&nbsp;Hexadecimal</label>
+&nbsp;
+<input type="button" value=" Generate "
+onclick="Generate_key();" />
+&nbsp;
+<input type="button" value=" Clear "
+onclick="document.getElementById('key').text.value = '';" />
+&nbsp;
+<input type="button" value=" Select "
+onclick="document.getElementById('key').text.select();" />
+</p>
 </form>
 <form id="plain" action="#" onsubmit="return false;">
-    <h3>Plain Text</h3>
-    <p class="c">
-        <textarea name="text" rows="16" cols="80" onfocus="ce();" onblur="ce();" onkeydown="ce();">
-        </textarea>
-        <br />
-        <input type="button" name="encrypt" value=" Encrypt " onclick="Encrypt_text();" /> &nbsp;
-        <input type="button" value=" Clear " onclick="document.getElementById('plain').text.value = '';" /> &nbsp;
-        <input type="button" value=" Select " onclick="document.getElementById('plain').text.select();" />
-        <br />
-        <b>Encoding:</b>&nbsp;
-        <label>
-            <input type="radio" checked="checked" name="encoding" />&nbsp;Codegroup</label>
-        &nbsp;
-        <label>
-            <input type="radio" name="encoding" />&nbsp;Hexadecimal</label>
-        &nbsp;
-        <label>
-            <input type="radio" name="encoding" />&nbsp;Base&nbsp;64</label>
-    </p>
+<h3>Plain Text</h3>
+<p class="c">
+<textarea name="text" rows="16" cols="80"
+style="background-color: rgb(200, 255, 200); color: #000000;"
+onfocus="ce();" onblur="ce();" onkeydown="ce();">
+</textarea>
+<br />
+<input type="button" name="encrypt" value=" Encrypt "
+onclick="Encrypt_text();" />
+&nbsp;
+<input type="button" value=" Clear "
+onclick="document.getElementById('plain').text.value = '';" />
+&nbsp;
+<input type="button" value=" Select "
+onclick="document.getElementById('plain').text.select();" />
+<br />
+<b>Encoding:</b>&nbsp;
+<label><input type="radio" checked="checked"
+name="encoding" />&nbsp;Codegroup</label>
+&nbsp;
+<label><input type="radio" name="encoding" />&nbsp;Hexadecimal</label>
+&nbsp;
+<label><input type="radio" name="encoding" />&nbsp;Base&nbsp;64</label>
+</p>
 </form>
 <form id="cipher" action="#" onsubmit="return false;">
-    <h3>Cipher Text</h3>
-    <p class="c">
-        <textarea name="text" rows="16" cols="80" onfocus="ce();" onblur="ce();" onkeydown="ce();">
-        </textarea>
-        <br />
-        <input type="button" name="decrypt" value=" Decrypt " onclick="Decrypt_text();" /> &nbsp;
-        <input type="button" value=" Clear " onclick="document.getElementById('cipher').text.value = '';" /> &nbsp;
-        <input type="button" value=" Select " onclick="document.getElementById('cipher').text.select();" />
-    </p>
-</form>
+<h3>Cipher Text</h3>
 <p class="c">
-    <em>This document is in the public domain.</em>
+<textarea name="text" rows="16" cols="80"
+style="background-color: rgb(255, 200, 200); color: #000000;"
+onfocus="ce();" onblur="ce();" onkeydown="ce();">
+</textarea>
+<br />
+<input type="button" name="decrypt" value=" Decrypt "
+onclick="Decrypt_text();" />
+&nbsp;
+<input type="button" value=" Clear "
+onclick="document.getElementById('cipher').text.value = '';" />
+&nbsp;
+<input type="button" value=" Select "
+onclick="document.getElementById('cipher').text.select();" />
 </p>
-<br>
-<br>
-
-            <table id="searchResult">
-                    	<thead id="tableHead">
-                    		<tr class="header">
-                    			<th><a href="#" title="Algorithm Type">Type</a></th>
-                    			<th><a href="#" title="Info">Info</a></th>
-                    			<th><abbr title="Encryption Algorithm"><a href="#" title="Encrypt">E</a></abbr></th>
-                    			<th><abbr title="Decryption Algorithm"><a href="#" title="Decrypt">D</a></abbr></th>
-                    		</tr>
-                    	</thead>
-                    	<tr>
-                    		<td class="vertTh">
-                    			<center>
-                    				<a href="#" title="">Caesar</a><br />
-                    				(<a href="#" title="">Symmetric</a>)
-                    			</center>
-                    		</td>
-                    		<td>
-                                <div class="detName">Please enter the string you wish to encrypt: <input id="caesarInp"><button id="caesarEncrypt">Caesar</button></div>
-                    		</td>
-                    		<td align="right">441</td>
-                    		<td align="right">56</td>
-                    	</tr>
-                    	<tr class="alt">
-                    		<td class="vertTh">
-                    			<center>
-                    				<a href="" title="">Results</a><br />
-                    				(<a href="" title="">Caesar Cipher</a>)
-                    			</center>
-                    		</td>
-                    		<td>
-                            <div class="detName">Caesar Encryption: 
-                                <div id="caesar"></div>
-                            </div>
-                            </td>
-                    		<td align="right">431</td>
-                    		<td align="right">120</td>
-                    	</tr>
-                    	
-                    	
-                    	<tr class="alt">
-                    		<td class="vertTh">
-                    			<center>
-                    				<a href="#" title="">RSA</a><br />
-                    				(<a href="#" title="">Asymmetric</a>)
-                    			</center>
-                    		</td>
-                    		<td>
-                                <div class="detName">Please enter the string you wish to encrypt: <input id="rsaInp"><button id="rsaEncrypt">RSA</button></div>
-                    		</td>
-                    		<td align="right">431</td>
-                    		<td align="right">120</td>
-                    	</tr>
-                    	<tr class="alt">
-                    		<td class="vertTh">
-                    			<center>
-                    				<a href="" title="">Results</a><br />
-                    				(<a href="" title="">RSA1</a>)
-                    			</center>
-                    		</td>
-                    		<td>
-                            <div class="detName">RSA Encryption: 
-                                <div id="caesar"></div>
-                            </div>
-                            </td>
-                    		<td align="right">431</td>
-                    		<td align="right">120</td>
-                    	</tr>
-                    	<tr>
-                    		<td class="vertTh">
-                    			<center>
-                    				<a href="#" title="">Sha-1</a><br />
-                    				(<a href="#" title="">Hash Algorithm</a>)
-                    			</center>
-                    		</td>
-                    		<td>
-                                <div class="detName">Please enter the string you wish to hash: <input type="text" name="strex" id="strex"><button type="button" id="cryptstr">SHA-1</button></div>
-                    		</td>
-                    		<td align="right">431</td>
-                    		<td align="right">120</td>
-                    	</tr>
-                    	<tr class="alt">
-                    		<td class="vertTh">
-                    			<center>
-                    				<a href="" title="">Results</a><br />
-                    				(<a href="" title="">SHA - 1</a>)
-                    			</center>
-                    		</td>
-                    		<td>
-                            <div class="detName">			<a href="#" class="detLink" title="#">SHA-1 Hash: 
-                                <input type="text" name="strcrypt" id="strcrypt" size="60"> </a>
-                            </div>
-                            </td>
-                    		<td align="right">431</td>
-                    		<td align="right">120</td>
-                    	</tr>
-                    		
-                    	
-                        
-                    	
-                    	
-                    	
-                    </table>
-                    <script type="text/javascript" src="static/js/caesar.js"></script>
-                    <script type="text/javascript" src="static/js/aes.js"></script>
-                    <script type="text/javascript" src="static/js/rsa.js"></script>
-                    <script type="text/javascript" src="static/js/sha1.js"></script>
-                    <script type="text/javascript" src="static/js/sha3.js"></script>
-                    <script type="text/javascript" src="static/js/sha256.js"></script>
-                </div>
-            </div>
-        </div>
-    </body>
+</form>
+<table class="footer">
+<tr>
+<td class="left">
+by <a href="http://www.fourmilab.ch/">Mr Robot</a><br />
+March, 2018<br />
+Updated: Oct, 2019
+</td>
+</table>
+<p class="c">
+<em>This document is in the public domain.</em>
+</p>
+</body>
 </html>
-
-
-<!-- <tr class="alt">
-
-<tr class="alt">
-                    		<td class="vertTh">
-                    			<center>
-                    				<a href="" title="">Sha-256</a><br />
-                    				(<a href="" title="">Hash Algorithm</a>)
-                    			</center>
-                    		</td>
-                    		<td>
-                                <div class="detName">Please enter the string you wish to hash: <input id="sha256Inp"><button id="sha256Encrypt">SHA-2</button></div>
-                    		</td>
-                    		<td align="right">431</td>
-                    		<td align="right">120</td>
-                    	</tr>
-                    	
-                    	<tr class="alt">
-                    		<td class="vertTh">
-                    			<center>
-                    				<a href="" title="">Sha-3</a><br />
-                    				(<a href="" title="">Hash Algorithm</a>)
-                    			</center>
-                    		</td>
-                    		<td>
-                                <div class="detName">Please enter the string you wish to hash: <input id="sha3Inp"><button id="sha3Encrypt">SHA-3</button></div>
-                    		</td>
-                    		<td align="right">431</td>
-                    		<td align="right">120</td>
-                    	</tr>
-                    		<td class="vertTh">
-                    			<center>
-                    				<a href="" title="">Results</a><br />
-                    				(<a href="" title="">SHA - 256</a>)
-                    			</center>
-                    		</td>
-                    		<td>
-                            <div class="detName">			<a href="#" class="detLink" title="#">SHA-2 Hash: 
-                                <input type="text" name="strcrypt" id="strcrypt" size="60"> </a>
-                            </div>
-                            </td>
-                    		<td align="right">431</td>
-                    		<td align="right">120</td>
-                    	</tr>
-                    	<tr class="alt">
-                    		<td class="vertTh">
-                    			<center>
-                    				<a href="" title="">Results</a><br />
-                    				(<a href="" title="">SHA - 3</a>)
-                    			</center>
-                    		</td>
-                    		<td>
-                            <div class="detName">			<a href="#" class="detLink" title="#">SHA-3 Hash: 
-                                <input type="text" name="strcrypt" id="strcrypt" size="60"> </a>
-                            </div>
-                            </td>
-                    		<td align="right">431</td>
-                    		<td align="right">120</td>
-                    	</tr>
-                    	<tr class="alt">
-                    		<td class="vertTh">
-                    			<center>
-                    				<a href="#" title="">AES</a><br />
-                    				(<a href="#" title="">Symmetric</a>)
-                    			</center>
-                    		</td>
-                    		<td>
-                                <div class="detName">Please enter the string you wish to encrypt: <input id="aesInp"><button id="aesEncrypt">AES</button></div>
-                    		</td>
-                    		<td align="right">431</td>
-                    		<td align="right">120</td>
-                    	</tr>
-                    	<tr class="alt">
-                    		<td class="vertTh">
-                    			<center>
-                    				<a href="" title="">Results</a><br />
-                    				(<a href="" title="">AES</a>)
-                    			</center>
-                    		</td>
-                    		<td>
-                            <div class="detName">AES Encryption: 
-                                <div id="caesar"></div>
-                            </div>
-                            </td>
-                    		<td align="right">431</td>
-                    		<td align="right">120</td>
-                    	</tr>
