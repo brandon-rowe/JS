@@ -59,8 +59,8 @@
          <span class="background" style="background-image:url('static/images/<!--landing.jpg-->')"></span>
           <div class="wrap aligncenter">
             <h1><strong>Encryption</strong></h1>
-            <p class="text-intro">Testing security standard encryption<br>
-              and considering future standards.
+            <p class="text-intro">Comparison of AES and RSA<br>
+              
             </p>
             <p>
               <a href="http://economictheory.co/seniorproj/presentation/static/docs/ResearchPaper.pdf" class="button zoomIn" title="Research">
@@ -111,21 +111,21 @@
 
         <section>
         <div class="wrap size-50 aligncenter">
-            <h2><strong>Types of Attacks</strong></h2>
-            <p class="text-intro"><a href="https://en.wikipedia.org/wiki/Collision_attack" title="Collision Wiki">SHA-1 Attack</a>, <a href="https://www.commonlounge.com/discussion/4c8ace459d1840408e487a673cca255d" title="Brute-Force">AES Attack</a> <!--<a href="demos/portfolios.html" title="Portfolios">portfolios</a>-->, and <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" title="Longforms">RSA Attack</a>.</p>
+            <h2><strong>Types of Comparison</strong></h2>
+            <p class="text-intro"><a href="#">Encryption Speed</a> <!--<a href="https://www.commonlounge.com/discussion/4c8ace459d1840408e487a673cca255d" title="Brute-Force">AES Attack</a> <!--<a href="demos/portfolios.html" title="Portfolios">portfolios</a>--> and <a href="#" title="Strength">Encryption Strength</a>.</p>
             <div class="bg-white shadow">
               <ul class="flexblock reasons">
-                <li><h2>Collision Attack (SHA-1)</h2>
-                  <p>In cryptography, a collision attack on a cryptographic hash tries to find two inputs producing the same hash value, i.e. a hash collision. Mathematically stated, a collision attack finds two different messages m1 and m2, such that hash(m1) = hash(m2). In a classical collision attack, the attacker has no control over the content of either message, but they are arbitrarily chosen by the algorithm.</p>
+                <li><h2>Encryption Speed</h2>
+                  <p>I will perform 50 tests for each encryption algorithm to determine speed efficiency. Each test takes in three files of differing sizes and encrypts the files  while recording the start and end time.</p>
                 </li>
                 <li>
-                  <h2>Brute-Force Attack - (AES)</h2>
-                  <p>The simplest attack on a cipher is the brute force attack. In this attack, an attacker simply tries to decrypt the message with each possible secret key and checks the result of the decryption to see if it makes sense. Given enough time and computational resources, this attack is guaranteed to work since the true secret key has to be within the set of possible secret keys and the attacker will eventually try it and (hopefully) realize that the resulting plaintext is the correct one.</p>
+                  <h2>Encryption Stength</h2>
+                  <p>For these same tests and results I will determine strength of the encrypted algorithm. Without a better metric, I chose to compare the size of the encrypted files created to gauge strength.</p>
                 </li>
-                <li>
+                <!--<li>
                   <h2>Chosen-Ciphertext Attack - (RSA)</h2>
                   <p>Because RSA encryption is a deterministic encryption algorithm (no random component) an attacker can launch a chosen plaintext attack against the cryptosystem, by encrypting likely plaintexts under the public key and test if they are equal to the ciphertext. A cryptosystem is called semantically secure if an attacker cannot distinguish two encryptions from each other, even if the attacker knows (or has chosen) the corresponding plaintexts.</p>
-                </li>
+                </li>-->
               </ul>
             </div>
           </div>
@@ -136,10 +136,10 @@
             <h3>Metrics</h3>
             <!-- li>a? Add blink = <ul class="flexblock metrics blink">-->
             <ul class="flexblock metrics border">
-              <li>Number of Tests<span>10001</span></li>
-              <li>Attacker Simulation<span><i class="fas fa-users"><use xlink:href="fas fa-users"></use></i></span></li>
+              <li>Number of Tests<span>100</span></li>
+              <li>Speed Simulation<span><i class="fas fa-rocket"><use xlink:href="fas fa-users"></use></i></span></li>
               <li>Pass/Fail Tests<span><i class="fas fa-chart-line"><use xlink:href="fas fa-chart-line"></use></i></span></li>
-              <li>Pass Percentage<span>64%</span></li>
+              <li>Accuracy<span>90%</span></li>
               <li><span><i class="fas fa-question"><use xlink:href="fas fa-question"></use></i></span>Compare Results</li>
               <li><span><i class="fas fa-comment"><use xlink:href="fas fa-comment"></use></i></span>Examine Hypothesis</li>
               <li><span><i class="fas fa-list"><use xlink:href="fas fa-list"></use></i></span>Record Conclusions</li>
