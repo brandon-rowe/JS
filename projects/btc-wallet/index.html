@@ -1,38 +1,152 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js" lang="en">
 <head>
-    <title>Bitcoin Wallet</title>
-    <script src="buidl.js"></script>
-    <script src="qrcode.js"></script>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Bitcoin Wallet</title>
+	<meta name="description" content="Bitcoin Wallet Generator">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" type="image/png" href="img/favicon.png">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/slicknav.min.css">
+	<link rel="stylesheet" href="css/cssanimation.min.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/responsive.css">
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="js/buidl.js"></script>
+    <script src="js/qrcode.js"></script>
 </head>
 <body>
-<h1>Bitcoin Paper Wallet</h1>
-<button onClick=" return clickButton();">New Address</button>
-<br>
-<h2>Bitcoin Address</h2>
-<div id="addDiv"></div>
-<br>
-<h2>Bitcoin Private Key</h2>
-<div id="piKeyDiv"></div>
-<br>
-<h2>Bitcoin QRcode</h2>
-<div id="QRDiv"></div>
-<br>
-<h2>Bitcoin Secure QR code</h2>
-<div id="QRpiDiv"></div>
+    <div class="preloader-wrap">
+        <div class="spinner"></div>
+    </div>
+	<div class="hero-wrapper text-center ">
+		<div class="hero-wrapper-text">
+			<div class="hero-content">
+				<div class="table">
+					<div class="table-cell">
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<h1 class="cssanimation effect3d">Bitcoin</h1>
+									<h3 class="cssanimation leFadeInLeft sequence">Wallet Generator</h3>
+									<p><span><a href="https://bitcoin.org/en">Bitcoin Home</a></span></p>			
+									<a href="https://www.coinbase.com/buy-bitcoin">buy now</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>				
+		</div>
+	</div>
 
+	<div id="generate" class="feature-area bg-off-white padding-90 fix">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="section-title text-center col-xs-12">
+						<h1 class="cssanimation leFadeInRight sequence">Bitcoin Paper Wallet</h1>
+						<p>Click the button to generate your own paper wallet with secure QR codes:</p>
+					</div>
+					<div class="feature-list col-xs-12">
+							<button onClick="return clickButton();">New Address</button>
+							<br>
+							<h2>Bitcoin Address</h2>
+							<div id="addDiv"></div>
+							<br>
+							<h2>Bitcoin Private Key</h2>
+							<div id="piKeyDiv"></div>
+							<br>
+							<h2>Bitcoin QRcode</h2>
+							<div id="QRDiv"></div>
+							<br>
+							<h2>Bitcoin Secure QR code</h2>
+							<div id="QRpiDiv"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="feature" class="feature-area bg-off-white padding-90 fix">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="section-title text-center col-xs-12">
+						<h1 class="cssanimation leFadeInRight sequence">Bitcoin</h1>
+						<p>There are so many reasons to choose bitcoin, here are a few items:</p>
+					</div>
+					<div class="feature-list col-xs-12">
+						<ul>
+							<li>It’s a new asset class</li>
+							<li>Performs independent from markets</li>
+							<li>Not subject to inflation as FIAT</li>
+							<li>It’s a great store of value</li>
+							<li>It can’t be confiscated</li>
+							<li>Infrastructure is in hyper-growth</li>
+							<li>Called the Honey Badger for a reason</li>
+							<li>Makes you question what you know</li>
+							<li>Makes you want to know more</li>
+							<li>Will likely appreciate in value</li>
+							<li>Limited Supply</li>
+							<li>Well Documented</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<script>
-    function clickButton(){
+	<div class="footer-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="footer-logo col-xs-12 text-center">
+						<h2 class="cssanimation leSnake sequence">Bitcoin</h2>
+					</div>
+					<div class="footer-social col-xs-12 text-center">
+						<a href="#"><i class="fa fa-reddit"></i></a>
+						<a href="#"><i class="fa fa-linkedin"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="copyright col-xs-12 text-center">
+						<p>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by <a href="https://cyntax.org" target="_blank">Cyntax</a>
+</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-        let pair = buidl.getNewAddress();
-        let address = pair.p2pkh;
-        let pikey = pair.pk;
-        document.getElementById("addDiv").innerHTML = address;
-        document.getElementById("piKeyDiv").innerHTML = pikey;
-        new QRCode(document.getElementById("QRDiv"), address);
-        new QRCode(document.getElementById("QRpiDiv"), pikey);
-    }
-</script>
+	<script>
+		function clickButton(){
+	
+			let pair = buidl.getNewAddress();
+			let address = pair.p2pkh;
+			let pikey = pair.pk;
+			document.getElementById("addDiv").innerHTML = address;
+			document.getElementById("piKeyDiv").innerHTML = pikey;
+			new QRCode(document.getElementById("QRDiv"), address);
+			new QRCode(document.getElementById("QRpiDiv"), pikey);
+		}
+	</script>
+<script src="js/vendor/jquery-1.12.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.scrollup.min.js"></script>
+<script src="js/mouse-scroll.js"></script>
+<script src="js/letteranimation.js"></script>
+<script src="js/jquery.slicknav.min.js"></script>
+<script src="js/main.js"></script>
+
 </body>
 </html>
