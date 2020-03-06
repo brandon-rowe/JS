@@ -54,17 +54,32 @@
 					<div class="feature-list col-xs-12">
 							<button onClick="return clickButton();">New Address</button>
 							<br>
-							<h2>Bitcoin Address</h2>
-							<div id="addDiv"></div>
+							<table width="100%">
+								<tr>
+									<td>
+										<h3>Bitcoin Address</h3>
+										<div id="addDiv"></div>
+									</td>
+								<br>
+									<td>
+										<h3>Bitcoin Private Key</h3>
+										<div id="piKeyDiv"></div>
+									</td>
+								</tr>
 							<br>
-							<h2>Bitcoin Private Key</h2>
-							<div id="piKeyDiv"></div>
-							<br>
-							<h2>Bitcoin QRcode</h2>
-							<div id="QRDiv"></div>
-							<br>
-							<h2>Bitcoin Secure QR code</h2>
-							<div id="QRpiDiv"></div>
+								<tr>
+									<td>
+										<h3>Bitcoin QRcode</h3>
+										<div id="QRDiv"></div>
+									</td>
+								<br>
+									<td>
+										<h3>Secure QR code</h3>
+										<div id="QRpiDiv"></div>
+									</td>
+								</tr>
+								
+							</table>
 					</div>
 				</div>
 			</div>
@@ -136,6 +151,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			let pikey = pair.pk;
 			document.getElementById("addDiv").innerHTML = address;
 			document.getElementById("piKeyDiv").innerHTML = pikey;
+			document.getElementById("QRDiv").innerHTML = "";
+			document.getElementById("QRpiDiv").innerHTML = "";
 			new QRCode(document.getElementById("QRDiv"), address);
 			new QRCode(document.getElementById("QRpiDiv"), pikey);
 		}
