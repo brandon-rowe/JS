@@ -28,6 +28,8 @@ p:last-child {
 a, button{
   text-decoration:none;
   color: #121212;
+  vertical-align: middle;
+  border-radius: 12px;
  }
 a, a::before, a::after, i, button, img, input,
 *::before, *::after {
@@ -214,22 +216,44 @@ ul{
   margin: 0 12px;
 }
 .hero-content a {
-	background: #ffffff none repeat scroll 0 0;
+	background:  #ff7700 none repeat scroll 0 0;
 	border: medium none;
-	color: #121212;
+	color: white;
 	display: inline-block;
 	font-weight: 700;
-	margin-top: 20px;
-	padding: 12px 45px;
+	margin-top: 10px;
+	padding: 6px 12px;
 	text-transform: uppercase;
 	transition: all 0.3s ease 0s;
     -webkit-transition: all 0.3s ease 0s;
     -moz-transition: all 0.3s ease 0s;
 }
 .hero-content a:hover {
+  background: #ffffff;
+  color: #121212;
+}
+.hero-content input{
+  margin-top: 10px
+}
+.hero-content button {
+	background: #ffffff none repeat scroll 0 0;
+	border: medium none;
+	color: #121212;
+	display: inline-block;
+	font-weight: 700;
+  margin-top: 10px;
+  margin-bottom: 10px;
+	padding: 6px 12px;
+	text-transform: uppercase;
+	transition: all 0.3s ease 0s;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+}
+.hero-content button:hover {
   background: #ff7700;
   color: #fff;
 }
+
 /*----------------------------------------*/
 /*  4.  Demo Area
 /*----------------------------------------*/
