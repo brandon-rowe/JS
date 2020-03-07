@@ -38,6 +38,9 @@
 									<h3 class="cssanimation leFadeInLeft sequence">Wallet Generator</h3>
 									<p><span><a href="https://bitcoin.org/en">Bitcoin Home</a></span></p>			
 									<a href="https://www.coinbase.com/buy-bitcoin">buy now</a>
+									<h3 class="cssanimation leFadeInLeft sequence">Donate</h3>
+									<input type = "text" id="donate" value ="34hr4vUr29FQQ7Az1gPYxzesFJC6tszfjC" >
+									<button onclick="donate()">Copy Donation Address</button>
 								</div>
 							</div>
 						</div>
@@ -126,6 +129,8 @@
 						<h2 class="cssanimation leSnake sequence">Bitcoin</h2>
 					</div>
 					<div class="footer-social col-xs-12 text-center">
+						
+						<a href="https://www.bitcoin.org"><i class="fa fa-bitcoin"></i></a>
 						<a href="https://www.reddit.com/r/Bitcoin/"><i class="fa fa-reddit"></i></a>
 						<a href="https://github.com/bitcoin/bitcoin"><i class="fa fa-github"></i></a>
 					</div>
@@ -138,9 +143,13 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="copyright col-xs-12 text-center">
-						<p>
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by <a href="https://cyntax.org" target="_blank">Cyntax</a>
-</p>
+						<p><a href="https://bitcoin.org/en/legal#information" target="_blank">Disclaimer</a></p>
+						
+						<p>Designed by <a href="https://cyntax.org" target="_blank">Cyntax</a></p>
+						
+						<p>Donate:  <a href="../../34hr4vUr29FQQ7Az1gPYxzesFJC6tszfjC">34hr4vUr29FQQ7Az1gPYxzesFJC6tszfjC</a></p>
+						
+						
 					</div>
 				</div>
 			</div>
@@ -159,6 +168,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			document.getElementById("QRpiDiv").innerHTML = "";
 			new QRCode(document.getElementById("QRDiv"), address);
 			new QRCode(document.getElementById("QRpiDiv"), pikey);
+		}
+
+		function donate(){
+			var copytxt = document.getElementById("donate");
+			copytxt.select();
+			copytxt.setSelectionRange(0, 999999);
+			document.execCommand("copy");
+			alert("Copied the text: " + copytxt.value);
 		}
 	</script>
 <script src="js/vendor/jquery-1.12.0.min.js"></script>
