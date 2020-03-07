@@ -164,7 +164,7 @@ ul{
 }
 .ptb-100{padding:50px 0px 100px;}
 .hero-wrapper {
-	background-image: url("img/bg-02.jpg");
+	background-image: url("img/bg-03.jpg");
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -367,6 +367,13 @@ ul{
   color: #333;
   content: "➞";
   margin-right: 10px;
+}
+.center img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 213px;
+  width: 213px;
 }
 /*----------------------------------------*/
 /*  10.  Footer Area
