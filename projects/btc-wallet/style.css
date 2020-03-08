@@ -392,6 +392,19 @@ ul{
   content: "➞";
   margin-right: 10px;
 }
+.feature-list ol li {
+  display: inline block;
+  list-style-type: none;
+  text-align: center;
+  line-height: 36px;
+  text-transform: uppercase;
+  margin-left: auto;
+  margin-right: auto;
+}
+.feature-list ol li::before {
+  color: #333;
+  margin-right: 10px;
+}
 .center img{
   display: block;
   margin-left: auto;
