@@ -48,17 +48,10 @@
 						<header class="align-center">
 							<h2>Paper Wallet Generator</h2>
 							<p>Click the button to generate your own paper wallet with secure QR codes:</p>
-							<button onClick="return clickButton();">Generate Address</button>
+							<button onClick="return generate();">Generate Address</button>
 						</header>
 						<div class="flex flex-2">
-							<div class="col align-center">
-									<div id="addDiv"></div>
-								<h3>Bitcoin Address</h3>
-							</div>
-							<div class="col align-center">
-									<div id="piKeyDiv"></div>
-								<h3>Bitcoin Private Key</h3>
-							</div>
+							
 							<div class="col align-center">
 									<div id="QRDiv" class="center"></div>
 								<h3>Bitcoin QRcode</h3>
@@ -67,12 +60,21 @@
 									<div id="QRpiDiv" class="center"></div>
 								<h3>Private Key QRcode</h3>
 							</div>
+							<div class="col align-center">	
+							<button id="copyAdd" style="display:none;" onClick="return address();">Copy Address</button>
+							<h3>Bitcoin Address</h3>
+							<textarea id="addDiv" row="2" readonly></textarea>
+						</div>
+						<div class="col align-center">
+							<button id="copyKey" style="display:none;" onClick="return key();">Copy Key</button>
+							<h3>Bitcoin Private Key</h3>
+							<textarea id="piKeyDiv" row="2" readonly></textarea>
+
+						</div>
 						</div>
 					</div>
 				</section>
-					
-				
-					<section class="wrapper style2">
+				<section class="wrapper style2">
 						<div class="inner">
 							<div class="row">
 								<h1>Offline Use:</h1>
@@ -95,8 +97,75 @@
 					<a href="btc-wallet.zip" class="button scrolly center">Download SRC Code</a>
 						</div>
 					</section>
-					
-					<!--<section id="contact" class="wrapper style1">
+			</div>
+
+			<footer id="footer">
+				<div class="copyright">
+					<ul class="icons">
+						<li><a href="https://bitcoin.org/en" class="icon fa-bitcoin"><span class="label">Bitcoin</span></a></li>
+						<li><a href="https://reddit.com/r/Bitcoin" class="icon fa-reddit"><span class="label">Reddit</span></a></li>
+						<li><a href="https://github.com/bitcoin/bitcoin" class="icon fa-github"><span class="label">Github</span></a></li>
+					</ul>
+					<p>&copy; Btc-wallet.io <br> All rights reserved <br> Designed by: <a href="http://cyntax.org">Cyntax</a> <br> <button onclick="donate()">Copy Donation Address</button>
+						<br> </p> <!--<input type = "text" id="donate" size="33" value ="34hr4vUr29FQQ7Az1gPYxzesFJC6tszfjC" readonly>-->
+
+						
+				</div>
+			</footer>
+			<script>
+				function generate(){
+					$("#copyAdd").show();
+					$("#copyKey").show();
+					let pair = buidl.getNewAddress();
+					let address = pair.p2pkh;
+					let pikey = pair.pk;
+					document.getElementById("addDiv").innerHTML = address;
+					document.getElementById("piKeyDiv").innerHTML = pikey;
+					document.getElementById("QRDiv").innerHTML = "";
+					document.getElementById("QRpiDiv").innerHTML = "";
+					new QRCode(document.getElementById("QRDiv"), address);
+					new QRCode(document.getElementById("QRpiDiv"), pikey);
+				}
+		
+				function donate(){
+					var copytxt = document.getElementById("donate");
+					copytxt.select();
+					copytxt.setSelectionRange(0, 999999);
+					document.execCommand("copy");
+					alert("Copied: " + copytxt.value);
+				}
+				function address(){
+					var copytxt = document.getElementById("addDiv");
+					copytxt.select();
+					copytxt.setSelectionRange(0, 999999);
+					document.execCommand("copy");
+					alert("Copied: " + copytxt.value);
+				}
+				function key(){
+					var copytxt = document.getElementById("piKeyDiv");
+					copytxt.select();
+					copytxt.setSelectionRange(0, 999999);
+					document.execCommand("copy");
+					alert("Copied: " + copytxt.value);
+				}
+
+				function test(){
+					alert("Button works")
+				}
+			</script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/letteranimation.js"></script>
+
+	</body>
+</html>
+
+
+<!--<section id="contact" class="wrapper style1">
 						<div class="inner">
 						<h3>Contact Us</h3>
 						<div class="row">
@@ -129,51 +198,3 @@
 								</form>
 						</div>
 					</section>-->
-
-			</div>
-
-			<footer id="footer">
-				<div class="copyright">
-					<ul class="icons">
-						<li><a href="https://bitcoin.org/en" class="icon fa-bitcoin"><span class="label">Bitcoin</span></a></li>
-						<li><a href="https://reddit.com/r/Bitcoin" class="icon fa-reddit"><span class="label">Reddit</span></a></li>
-						<li><a href="https://github.com/bitcoin/bitcoin" class="icon fa-github"><span class="label">Github</span></a></li>
-					</ul>
-					<p>&copy; Btc-wallet.io <br> All rights reserved <br> Designed by: <a href="http://cyntax.org">Cyntax</a> <br> <button onclick="donate()">Copy Donation Address</button>
-						<br> </p> <!--<input type = "text" id="donate" size="33" value ="34hr4vUr29FQQ7Az1gPYxzesFJC6tszfjC" readonly>-->
-
-						
-				</div>
-			</footer>
-			<script>
-				function clickButton(){
-			
-					let pair = buidl.getNewAddress();
-					let address = pair.p2pkh;
-					let pikey = pair.pk;
-					document.getElementById("addDiv").innerHTML = address;
-					document.getElementById("piKeyDiv").innerHTML = pikey;
-					document.getElementById("QRDiv").innerHTML = "";
-					document.getElementById("QRpiDiv").innerHTML = "";
-					new QRCode(document.getElementById("QRDiv"), address);
-					new QRCode(document.getElementById("QRpiDiv"), pikey);
-				}
-		
-				function donate(){
-					var copytxt = document.getElementById("donate");
-					copytxt.select();
-					copytxt.setSelectionRange(0, 999999);
-					document.execCommand("copy");
-					alert("Copied: " + copytxt.value);
-				}
-			</script>
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/letteranimation.js"></script>
-
-	</body>
-</html>
