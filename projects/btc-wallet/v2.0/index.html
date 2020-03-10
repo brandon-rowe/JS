@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Bitcoin Wallet</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="keyword" content="Bitcoin, Bitcoin wallet, BTC, BTC wallet, Paper wallet, crypto" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/cssanimation.min.css" />
+		<link rel="stylesheet" href="assets/css/animate.min.css">
+		<script type="text/javascript" src="assets/js/buidl.js"></script>
+		<script type="text/javascript" src="assets/js/qrcode.js"></script>
+		<script type="text/javascript" src="assets/js/qrcode.min.js"></script>
+	</head>
+	<body>
+			<header id="header" class="alt">
+				<div class="logo"><a href="index.html"><span><img src="images/bitcoin.png"></span></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="https://bitcoin.org/en">Home</a></li>
+					<li><a href="https://coinbase.com/buy-bitcoin">Buy BTC</a></li>
+				</ul>
+				<ul class="icons">
+						<li><a href="https://reddit.com/r/Bitcoin" class="icon fa-reddit"><span class="label">Reddit</span></a></li>
+						<li><a href="https://github.com/bitcoin/bitcoin" class="icon fa-instagram"><span class="label">Github</span></a></li>
+				</ul>
+			</nav>
+			<section id="banner">
+				<div class="inner">
+					<header>
+						<h1 class="cssanimation effect3d">Bitcoin</h1>
+						<p><strong style="color:white">Wallet Generator</strong> </p>
+					</header>
+					
+					<a href="btc-wallet.zip" class="button small">Download SRC Code</a>
+					<p class="cssanimation leFadeInRight sequence">Donate BTC:</p>
+					<button onclick="donate()">Copy Donation Address</button>
+					<br>
+					<input type = "text" id="donate" size="33" value ="34hr4vUr29FQQ7Az1gPYxzesFJC6tszfjC" readonly>
+				</div>
+				</div>
+			</section>
+			
+			<div id="main">
+				<section class="wrapper style1">
+					<div class="inner">
+						<header class="align-center">
+							<h2>Paper Wallet Generator</h2>
+							<p>Click the button to generate your own paper wallet with secure QR codes:</p>
+							<button onClick="return clickButton();">Generate Address</button>
+						</header>
+						<div class="flex flex-2">
+							<div class="col align-center">
+									<div id="addDiv"></div>
+								<h3>Bitcoin Address</h3>
+							</div>
+							<div class="col align-center">
+									<div id="piKeyDiv"></div>
+								<h3>Bitcoin Private Key</h3>
+							</div>
+							<div class="col align-center">
+									<div id="QRDiv" class="center"></div>
+								<h3>Bitcoin QRcode</h3>
+							</div>
+							<div class="col align-center">
+									<div id="QRpiDiv" class="center"></div>
+								<h3>Private Key QRcode</h3>
+							</div>
+						</div>
+					</div>
+				</section>
+					
+				
+					<section class="wrapper style2">
+						<div class="inner">
+							<div class="row">
+								<h1>Offline Use:</h1>
+									<dl>
+										<dt>Download files</dt>
+										<dd>
+											<p>Download the files, unzip the folder and open it. Click the index.html file to launch locally in your browser. No internet required.</p>
+										</dd>
+										<dt>Save folder on USB</dt>
+										<dd>
+											<p>Save the src code folder to a usb. Now you can plug in your USB to any computer and pull up a browser to generate paper wallets.</p>
+										</dd>
+										<dt>Generate paper wallets</dt>
+										<dd>
+											<p>Generate a paper wallet anytime, anywhere with this front-end client. Protect yourself from spies and hackers with paper wallets.</p>
+										</dd>
+									</dl>
+							</div>
+
+					<a href="btc-wallet.zip" class="button scrolly center">Download SRC Code</a>
+						</div>
+					</section>
+					
+					<!--<section id="contact" class="wrapper style1">
+						<div class="inner">
+						<h3>Contact Us</h3>
+						<div class="row">
+						    <div class="6u 12u$(small)">
+									<p>Phone: <a href="tel:18649099070">1-864-909-9070</a></p>
+								</div>
+								<div class="6u$ 12u$(small)">
+									<p>Email: <a href="mailto:info@olivergrading.com">info@olivergrading.com</a> </p>
+								</div>
+								
+							</div>
+								<form method="post" action="#">
+									<div class="row uniform">
+										<div class="6u 12u$(xsmall)">
+										<input type="text" name="name" id="name" value="" placeholder="Name" />
+										</div>
+										<div class="6u$ 12u$(xsmall)">
+											<input type="email" name="email" id="email" value="" placeholder="Email" />
+										</div>
+										<div class="12u$">
+											<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
+										</div>
+										<div class="12u$">
+											<ul class="actions">
+												<li><input type="submit" style="align-center" value="Send Message" /></li>
+												<li><input type="reset" style="align-center" value="Reset" class="alt" /></li>
+											</ul>
+										</div>
+									</div>
+								</form>
+						</div>
+					</section>-->
+
+			</div>
+
+			<footer id="footer">
+				<div class="copyright">
+					<ul class="icons">
+						<li><a href="https://reddit.com/r/Bitcoin" class="icon fa-reddit"><span class="label">Reddit</span></a></li>
+						<li><a href="https://github.com/bitcoin/bitcoin" class="icon fa-instagram"><span class="label">Github</span></a></li>
+					</ul>
+					<p>&copy; Btc-wallet.io <br> All rights reserved <br> Designed by: <a href="http://cyntax.org">Cyntax</a> <br> <button onclick="donate()">Copy Donation Address</button>
+						<br> </p> <!--<input type = "text" id="donate" size="33" value ="34hr4vUr29FQQ7Az1gPYxzesFJC6tszfjC" readonly>-->
+
+						
+				</div>
+			</footer>
+			<script>
+				function clickButton(){
+			
+					let pair = buidl.getNewAddress();
+					let address = pair.p2pkh;
+					let pikey = pair.pk;
+					document.getElementById("addDiv").innerHTML = address;
+					document.getElementById("piKeyDiv").innerHTML = pikey;
+					document.getElementById("QRDiv").innerHTML = "";
+					document.getElementById("QRpiDiv").innerHTML = "";
+					new QRCode(document.getElementById("QRDiv"), address);
+					new QRCode(document.getElementById("QRpiDiv"), pikey);
+				}
+		
+				function donate(){
+					var copytxt = document.getElementById("donate");
+					copytxt.select();
+					copytxt.setSelectionRange(0, 999999);
+					document.execCommand("copy");
+					alert("Copied: " + copytxt.value);
+				}
+			</script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/letteranimation.js"></script>
+
+	</body>
+</html>
