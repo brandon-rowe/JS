@@ -1,37 +1,41 @@
 function calc() 
 	{
    		var hrlyPay = document.getElementById('hourly_wage').value;
-    	var hours = document.getElementById('weekly_hours').value;
- 		var overtimeHours = hours - 40;
-		var overtimeHrlyPay = hrlyPay * 1.5;
-		var overtimePay = overtimeHours * overtimeHrlyPay;
-		var regularPay = (hrlyPay * 40);
-		var tax = 0.3;
-		var salary;
+		var hours = document.getElementById('weekly_hours').value;
+
+		var overtimeHours, overtimeHrlyPay, overtimePay, regularPay, salary, pay;
+		var tax = 0.27;
 
 		if (hours > 40)
 		{
-			var pay = regularPay + overtimePay;
-			salary = regularPay*52;
+			overtimeHours = hours - 40;
+			overtimeHrlyPay = hrlyPay * 1.5;
+			overtimePay = overtimeHours * overtimeHrlyPay;
+			regularPay = (hrlyPay * 40);
+			pay = regularPay + overtimePay;
+			salary = pay*52;
 			var wageTax = pay * tax;
-			afterTaxes = pay - wageTax;
-		}
-		else if (hours <= 40)
-		{
-			pay = 0;
-			regularPay = hrlyPay*hours;
-			salary = regularPay*52;
-			wageTax = regularPay * tax;
-			afterTaxes = regularPay - wageTax;
-		}
-
-    		var html = 	
+			afterTaxes = pay - wageTax
+			var html = 	
     		'</br>Your total pay is $' + pay.toFixed(2) + 
 			'</br> Your overtime pay is $' + overtimePay.toFixed(2) + 
 			'</br> Your regular pay is $' + regularPay.toFixed(2) + 
 			'</br> Your salary is $' + salary.toFixed(2) + ' without overtime calculated ' +
 			'</br> Your pay minus taxes is roughly $' + afterTaxes.toFixed(2);
-	
+		}
+		else if (hours <= 40)
+		{
+			regularPay = hrlyPay*hours;
+			pay = regularPay;
+			salary = regularPay*52;
+			wageTax = regularPay * tax;
+			afterTaxes = regularPay - wageTax
+			var html = 	
+    		'</br>Your total pay is $' + pay.toFixed(2) + 
+			'</br> Your regular pay is $' + regularPay.toFixed(2) + 
+			'</br> Your salary is $' + salary.toFixed(2) + ' without overtime calculated ' +
+			'</br> Your pay minus taxes is roughly $' + afterTaxes.toFixed(2);
+		}
     		document.getElementById('result').innerHTML = html;
 	}
-	document.getElementById('say').addEventListener('click', calc);
+	/*document.getElementById('calc').addEventListener('click', calc);*/

@@ -12,25 +12,26 @@ Weekly Hours: <input id="weekly_hours">
 	function calc() 
 	{
    		var hrlyPay = document.getElementById('hourly_wage').value;
-    		var hours = document.getElementById('weekly_hours').value;
- 		var overtimeHours = hours - 40;
-		var overtimeHrlyPay = hrlyPay * 1.5;
-		var overtimePay = overtimeHours * overtimeHrlyPay;
-		var regularPay = (hrlyPay * 40);
-		var tax = 0.3;
-		var salary;
+    	var hours = document.getElementById('weekly_hours').value;
+		var tax = 0.27;
+		var salary, pay;
 
 		if (hours > 40)
 		{
-			var pay = regularPay + overtimePay;
+			
+			var overtimeHours = hours - 40;
+			var overtimeHrlyPay = hrlyPay * 1.5;
+			var overtimePay = overtimeHours * overtimeHrlyPay;
+			var regularPay = (hrlyPay * 40);
+			pay = regularPay + overtimePay;
 			salary = pay*52;
 			var wageTax = pay * tax;
 			afterTaxes = pay - wageTax
 		}
 		else if (hours <= 40)
 		{
-			pay = 0;
 			regularPay = hrlyPay*hours;
+			pay = regularPay;
 			salary = regularPay*52;
 			wageTax = regularPay * tax;
 			afterTaxes = regularPay - wageTax

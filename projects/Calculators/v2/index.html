@@ -5,13 +5,17 @@
 	<body>
 		Hourly Rate: <input id="hourly_wage">
 		Weekly Hours: <input id="weekly_hours">
-		<button id="say">Calculate Pay!</button>
+		<button id="calc" onclick="calc()">Calculate Pay!</button>
 		<hr>
 		<div id="result"></div>
 		</br>
 		Total Bill: <input id="total_bill">
 		Tip Percentage: <input id="tip_percentage">
-		<button id="som">Calculate Tip!</button>
+		<button onclick="tipCalc()" >Calculate Tip!</button><hr><br>
+		Or Enter Total Bill and Select percentage button:
+		<button onclick="ten()" >Calculate 10% Tip!</button>
+		<button onclick="fifteen()" >Calculate 15% Tip!</button>
+		<button onclick="twenty()" >Calculate 20% Tip!</button>
 		<hr>
 		<div id="tip"></div>
 		</br>
