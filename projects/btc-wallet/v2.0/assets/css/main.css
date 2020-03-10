@@ -4,7 +4,7 @@
 
 /* Reset */
 
-	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, p1, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 		margin: 0;
 		padding: 0;
 		border: 0;
@@ -1650,6 +1650,11 @@
 		margin: 0 0 2em 0;
 	}
 
+	p1 {
+		margin: 0 0 1em 0;
+
+	}
+
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: 700;
 		line-height: 1.5;
@@ -1770,6 +1775,10 @@
 
 	header p {
 		font-size: 1.25em;
+	}
+	header p1 {
+		font-size: 2em;
+		color: white;
 	}
 
 	hr {
@@ -2712,6 +2721,11 @@
 	header p {
 		position: relative;
 		margin: 0 0 1.5em 0;
+	}
+
+	header p1 {
+		position: relative;
+		margin: 0 0 1em 0;
 	}
 
 	header h2 + p {
