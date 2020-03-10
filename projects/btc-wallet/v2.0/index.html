@@ -48,29 +48,24 @@
 						<header class="align-center">
 							<h2>Paper Wallet Generator</h2>
 							<p>Click the button to generate your own paper wallet with secure QR codes:</p>
-							<button onClick="return generate();">Generate Address</button>
+							<button id="generate" onClick="return generate();">Generate Address</button>
 						</header>
 						<div class="flex flex-2">
 							
 							<div class="col align-center">
-									<div id="QRDiv" class="center"></div>
-								<h3>Bitcoin QRcode</h3>
+									<div id="QRDiv"></div>
+								<h3 id="addQRHead" style="display:none;" >Address QRcode</h3>	
+								<button id="copyAdd" style="display:none;" onClick="return address();">Copy Address</button>
+								<h3 id="addHead" style="display:none;" >Bitcoin Address:</h3>
+								<textarea id="addDiv" row="2" style="display:none;" readonly></textarea>
 							</div>
 							<div class="col align-center">
-									<div id="QRpiDiv" class="center"></div>
-								<h3>Private Key QRcode</h3>
+									<div id="QRpiDiv"></div>
+								<h3 id="piQRHead" style="display:none;" > Private Key QRcode</h3>
+								<button id="copyKey" style="display:none;" onClick="return key();">Copy Key</button>
+								<h3 id="piKeyHead" style="display:none;" >Bitcoin Private Key:</h3>
+								<textarea id="piKeyDiv" style="display:none;" row="2" readonly></textarea>
 							</div>
-							<div class="col align-center">	
-							<button id="copyAdd" style="display:none;" onClick="return address();">Copy Address</button>
-							<h3>Bitcoin Address</h3>
-							<textarea id="addDiv" row="2" readonly></textarea>
-						</div>
-						<div class="col align-center">
-							<button id="copyKey" style="display:none;" onClick="return key();">Copy Key</button>
-							<h3>Bitcoin Private Key</h3>
-							<textarea id="piKeyDiv" row="2" readonly></textarea>
-
-						</div>
 						</div>
 					</div>
 				</section>
@@ -108,51 +103,9 @@
 					</ul>
 					<p>&copy; Btc-wallet.io <br> All rights reserved <br> Designed by: <a href="http://cyntax.org">Cyntax</a> <br> <button onclick="donate()">Copy Donation Address</button>
 						<br> </p> <!--<input type = "text" id="donate" size="33" value ="34hr4vUr29FQQ7Az1gPYxzesFJC6tszfjC" readonly>-->
-
-						
 				</div>
 			</footer>
-			<script>
-				function generate(){
-					$("#copyAdd").show();
-					$("#copyKey").show();
-					let pair = buidl.getNewAddress();
-					let address = pair.p2pkh;
-					let pikey = pair.pk;
-					document.getElementById("addDiv").innerHTML = address;
-					document.getElementById("piKeyDiv").innerHTML = pikey;
-					document.getElementById("QRDiv").innerHTML = "";
-					document.getElementById("QRpiDiv").innerHTML = "";
-					new QRCode(document.getElementById("QRDiv"), address);
-					new QRCode(document.getElementById("QRpiDiv"), pikey);
-				}
-		
-				function donate(){
-					var copytxt = document.getElementById("donate");
-					copytxt.select();
-					copytxt.setSelectionRange(0, 999999);
-					document.execCommand("copy");
-					alert("Copied: " + copytxt.value);
-				}
-				function address(){
-					var copytxt = document.getElementById("addDiv");
-					copytxt.select();
-					copytxt.setSelectionRange(0, 999999);
-					document.execCommand("copy");
-					alert("Copied: " + copytxt.value);
-				}
-				function key(){
-					var copytxt = document.getElementById("piKeyDiv");
-					copytxt.select();
-					copytxt.setSelectionRange(0, 999999);
-					document.execCommand("copy");
-					alert("Copied: " + copytxt.value);
-				}
-
-				function test(){
-					alert("Button works")
-				}
-			</script>
+			<script src="assets/js/simple.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
