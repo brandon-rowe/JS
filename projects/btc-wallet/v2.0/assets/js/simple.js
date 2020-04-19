@@ -9,7 +9,6 @@ function generate(){
     $("#addHead").show();
     $("#piKeyHead").show();
     $("#piQRHead").show();
-    $("#generate").hide();
     let pair = buidl.getNewAddress();
     let address = pair.p2pkh;
     let pikey = pair.pk;
