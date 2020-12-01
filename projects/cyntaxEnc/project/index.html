@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Encryption Project</title>
+    <meta name="description" content="Started as a Senior Seminar Project - Topic: Encryption">
+    <meta name="keywords" content="encryption standards, encryption, aes, rsa, sha-1, sha-256, sha-3">
+    <meta name="popwin" content="popwin-verification" />
+    <link rel="stylesheet" href="static/css/tpb.css">
+</head>
+
+<body>
+    <div id="fp">
+        <h1><a href="index.html" style="border: 0;"><!--<img src="static/img/hydra-tp.png">--></a></h1>
+        <nav id="navlinks"> 
+            <strong>Encrypted Message</strong> | 
+            <a href="encrypt.html" title="Browse Encryption Testing">Browse Encryption</a> | 
+            <a href="sha.html" title="Encryption Grading Metrics">Hash Algorithms</a> | 
+            <a href="ref.html" title="Recent Encryption Articles">Recent Articles</a>            
+        </nav> <br>
+        <form style="border-radius: 25px; margin: 0 auto; border: 2px solid black; background-repeat: repeat; padding: 20px; width: 350px; height: 150px;" name="q" method="get" action="/s/">
+            <p id="inp">
+                <p style="color:red;"><strong>Tools below are under development. Not working, yet.</strong></p> <input style="width:175px;" name="q" type="search" title="Encrypt_msg" placeholder="Enter Message to Encrypt" class="https_form" autofocus required></p>
+            <p id="chb"> 
+                <label title="All" accesskey="a"><input id="all" onclick="setAll();" type="checkbox" checked>All</label> 
+                <label title="Audio" accesskey="q"><input name="audio" id="audio" onclick="rmAll();" type="checkbox">AES</label> 
+                <label title="Video" accesskey="w"><input name="video" id="video" onclick="rmAll();" type="checkbox">RSA</label> 
+                <label title="Applications" accesskey="e"><input name="apps" id="apps" onclick="rmAll();" type="checkbox">SHA-1</label> 
+                <label title="Games" accesskey="r"><input name="games" id="games" onclick="rmAll();" type="checkbox">SHA-256</label>                
+                <label title="Other" accesskey="y"><input name="other" id="other" onclick="rmAll();" type="checkbox">SHA-3</label>
+            </p>
+            <p id="subm"> <input type="submit" title="Encrypt" value="Encrypt Message" accesskey="s"> <input type="submit" title="Decrypt" name="Decrypt" value="Decrypt Message"> <input type="hidden" name="page" value="0"> <input type="hidden" name="orderby" value="99"></p>
+        </form>
+        <br> <strong id="howdl"><a href="https://en.wikipedia.org/wiki/Cryptography_standards#Encryption_standards" title="Encryption Standards">Encryption Standards</a></strong></div>
+    <footer>
+        <nav> 
+            <a href="https://github.com/brandon-rowe/JS/tree/master/projects/Encryption" title="Github">Github</a> |
+            <a href="cryptography/index.html" title="Research">Research</a> | 
+            <a href="https://en.wikipedia.org/wiki/Encryption" title="Encryption Wiki">Wikipedia</a>
+             <br> 
+             <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode" title="Creative Commons">Usage policy</a> | 
+             <a href="https://www.torproject.org/" title="Discover TOR">TOR</a> | 
+             <a href="https://www.brave.com/" title="Discover Brave">BRAVE</a> |
+             <a href="https://www.wikileaks.org/" title="Discover Wikileaks">WikiLeaks</a>  |
+             <a href="#" title="Security Best Practices">Security</a>
+             </nav>
+        <div id="stats"></div>
+        <div id="icons">       
+            <br>
+            <h3 style="color:green;"><strong>Donate</strong></h3>
+            <a href="#" target="_NEW">Bitcoin (BTC)</a>: <b>34hr4vUr29FQQ7Az1gPYxzesFJC6tszfjC</b> 
+            <br>
+            <a href="#"  target="_NEW">Monero (XMR)</a>: <b>47teg4XgBCWHx6uNAaXiob3Bywa4ifefoWBogpnRiWDgSKcVs18EVDQAmZKti4noWNgP1zQ7YaqL8BvPm9u5iyKtTqs6ENH</b>  
+            <br> 
+            <a href="http://www.kopimi.com/kopimi" target="_blank" title="Kopimi" class="sp kopimi"><span>Kopimi</span></a> <br>
+        </div>
+    </footer>
+    <footer>
+        <div id="stats">
+            <p>This site is for the study of security and encryption.</p>
+            <p>This is a project under development by <a href="http://cyntax.org"><i>Cyntax.</i></a> The site will be used as opensource code to study encryption. All code and files are opensource and free to use.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

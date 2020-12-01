@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Encryption Project</title>
+    <meta name="description" content="Started as a Senior Seminar Project - Topic: Encryption">
+    <meta name="keywords" content="encryption standards, encryption, aes, rsa, sha-1, sha-256, sha-3">
+    <meta name="popwin" content="popwin-verification" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="static/css/pirate6.css" />
+    <style type="text/css">
+        .searchBox {
+            margin: 6px;
+            width: 300px;
+            vertical-align: middle;
+            padding: 2px;
+            background-image: url('//thepiratebay.org/static/img/icon-https.gif');
+            background-repeat: no-repeat;
+            background-position: right
+        }
+
+        .detLink {
+            font-size: 1.2em;
+            font-weight: 400
+        }
+
+        .detDesc {
+            color: #4e5456
+        }
+
+        .detDesc a:hover {
+            color: #009;
+            text-decoration: underline
+        }
+
+        .sortby {
+            text-align: left;
+            float: left
+        }
+
+        .detName {
+            padding-top: 3px;
+            padding-bottom: 2px
+        }
+
+        .viewswitch {
+            font-style: normal;
+            float: right;
+            text-align: right;
+            font-weight: normal
+        }
+    </style>
+    <script src="static/js/jquery.min.js" type="text/javascript"></script>
+    <script src="static/js/tpb.js" type="text/javascript"></script>
+    <script language="javascript" type="text/javascript">
+        if (top.location != self.location) {
+            top.location.replace(self.location);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="header">
+        <form method="get" id="q" action="/s/"> <a href="index.html" class="img"><img src="static/img/tpblogo_sm_ny.gif" id="TPBlogo" alt="The Pirate Bay" /></a> <a href="index.html" title="Search Torrents">Home</a>&nbsp;&nbsp;|&nbsp; <a href="encrypt.html" title="Browse Encryption">Browse Encryption</a>&nbsp;&nbsp;|&nbsp;
+            <a href="sha.html" title="Hash Algorithms">Hash Algorithms</a>&nbsp;&nbsp;|&nbsp; <b><a href="articles.html" title="Recent Articles">Recent Articles</a></b>&nbsp;&nbsp;|&nbsp; <br /><input type="search" title="Pirate Search" name="q" required
+                placeholder="Search here..." value="Encryption Articles" style="background-color:#ffffe0;" class="searchBox" /><input value="Encryption Search" type="submit" class="submitbutton" /><br/> <input type="hidden" name="page" value="0" /> <input
+                type="hidden" name="orderby" value="99" /></form>
+    </div>
+    <div id="SearchResults">
+        <div id="content">
+            <div id="main-content">
+                <table id="searchResult">
+                    <thead id="tableHead">
+                        <tr class="header">
+                            <th><a href="#" title="Algorithm Type">Type</a></th>
+                            <th>
+                                <div class="sortby"><a href="#" title="Info">Info</a></div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td class="vertTh">
+                            <center> <a href="#" title="">Caesar</a><br /> (<a href="#" title="">Symmetric</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://www.geeksforgeeks.org/caesar-cipher-in-cryptography/" class="detLink" title="#">Caesar Cipher in Cryptography - Geeks for Geeks </a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="vertTh">
+                            <center> <a href="#" title="">Caesar</a><br /> (<a href="#" title="">Symmetric</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://hbfs.wordpress.com/2013/04/02/caesars-cipher/" class="detLink" title="#">History of Caesar Cipher - HBFS </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">RSA</a><br /> (<a href="#" title="">Asymmetric</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://www.comparitech.com/blog/information-security/rsa-encryption/" class="detLink" title="#">RSA Encryption - CompariTech </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">Encryption Types</a><br /> (<a href="#" title="">Symmetric Encryption</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://www.cryptomathic.com/news-events/blog/symmetric-encryption-algorithms-their-strengths-and-weaknesses-and-the-need-for-crypto-agility" class="detLink" title="#">Symmetric Encryption Algorithm - Cryptomathic </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">Symmetric Encryption</a><br /> (<a href="#" title="">Wiki</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://en.wikipedia.org/wiki/Symmetric-key_algorithm" class="detLink" title="#">Symmetric-key Algorithm - Wiki </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">Encryption Types</a><br /> (<a href="#" title="">Asymmetric vs Symmetric</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://www.ssl2buy.com/wiki/symmetric-vs-asymmetric-encryption-what-are-differences" class="detLink" title="#">Symmetric vs Asymmetric Encryption - SSL2BUY </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">Encryption Types</a><br /> (<a href="#" title="">Asymmetric</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="http://www.omnisecu.com/security/public-key-infrastructure/asymmetric-encryption-algorithms.php" class="detLink" title="#">Types of Asymmetric Algorithms - OmniSecu </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">Encryption Types</a><br /> (<a href="#" title="">Asymmetric vs Symmetric</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"><a href="https://digitalguardian.com/blog/what-data-encryption" class="detLink" title="#">Types of Encryption - Digital Guardian</div></a></td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">SHA-1</a><br /> (<a href="#" title="">Hash</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://coursesweb.net/javascript/sha1-encrypt-data_cs" class="detLink" title="#">SHA-1 Hash Algorithm - Courseweb </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">SHA-1</a><br /> (<a href="#" title="">Hash</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="http://www.webtoolkit.info/javascript_sha256.html#.XbtTdkVKiGg" class="detLink" title="#">SHA-1 Hash Algorithm - Web Toolkit </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">SHA-1</a><br /> (<a href="#" title="">Hash</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://www.movable-type.co.uk/scripts/sha1.html" class="detLink" title="#">SHA-1 Hash Algorithm - Movable Type </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">Sha-256</a><br /> (<a href="#" title="">Hash</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://xorbin.com/tools/sha256-hash-calculator" class="detLink" title="#">SHA-2 (SHA-256) Hash Algorithm - Xorbin </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">SHA</a><br /> (<a href="#" title="">Hash</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://coursesweb.net/javascript/jssha-hash-hmac" class="detLink" title="#">SHA Hash Algorithms - Courseweb </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">SHA</a><br /> (<a href="#" title="">Hash</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://caligatio.github.io/jsSHA/" class="detLink" title="#">SHA Hash Algorithms - Github </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">AES</a><br /> (<a href="#" title="">Symmetric</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://www.fourmilab.ch/javascrypt/" class="detLink" title="#">AES Encryption - JavaScrypt </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">List</a><br /> (<a href="#" title="">Hash</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://en.wikipedia.org/wiki/List_of_hash_functions" class="detLink" title="#">List of Hash Functions - Wiki </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">Compare</a><br /> (<a href="#" title="">Hash</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://en.wikipedia.org/wiki/Comparison_of_cryptographic_hash_functions" class="detLink" title="#">Comparison of Hash Functions - Wiki </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">Message Digest</a><br /> (<a href="#" title="">Hash</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://www.techopedia.com/definition/4024/message-digest" class="detLink" title="#">Message Digest - Technopedia </a></div>
+                        </td>
+                    </tr>
+                    <tr class="alt">
+                        <td class="vertTh">
+                            <center> <a href="#" title="">Secure Hash Algorithm</a><br /> (<a href="#" title="">Hash</a>)</center>
+                        </td>
+                        <td>
+                            <div class="detName"> <a href="https://www.techopedia.com/definition/10328/secure-hash-algorithm-sha" class="detLink" title="#">Secure Hash Algorithm - Technopedia </a></div>
+                        </td>
+                    </tr>
+                </table>
+                </div> <br>
+                <footer>
+                    <nav> 
+                        <a href="https://github.com/brandon-rowe/JS/tree/master/projects/Encryption" title="Github">Github</a> |
+                        <a href="cryptography/index.html" title="Research">Research</a> | 
+                        <a href="https://en.wikipedia.org/wiki/Encryption" title="Encryption Wiki">Wikipedia</a>
+                         <br> 
+                         <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode" title="Creative Commons">Usage policy</a> | 
+                         <a href="https://www.torproject.org/" title="Discover TOR">TOR</a> | 
+                         <a href="https://www.brave.com/" title="Discover Brave">BRAVE</a> |
+                         <a href="https://www.wikileaks.org/" title="Discover Wikileaks">WikiLeaks</a>  |
+                         <a href="#" title="Security Best Practices">Security</a>
+                         </nav>
+                    <div id="stats"></div>
+                    <div id="icons">       
+                        <br>
+                        <h3 style="color:green;"><strong>Donate</strong></h3>
+                        <a href="#" target="_NEW">Bitcoin</a>: <b>34hr4vUr29FQQ7Az1gPYxzesFJC6tszfjC</b> 
+                        <br>
+                        <a href="#"  target="_NEW">Monero</a>: <b>47teg4XgBCWHx6uNAaXiob3Bywa4ifefoWBogpnRiWDgSKcVs18EVDQAmZKti4noWNgP1zQ7YaqL8BvPm9u5iyKtTqs6ENH</b>  
+                        <br> 
+                        <a href="http://www.kopimi.com/kopimi" target="_blank" title="Kopimi" class="sp kopimi"><span>Kopimi</span></a> <br>
+                    </div>
+                </footer>
+                <footer>
+                    <div id="stats">
+                        <p>This site is for the study of security and encryption.</p>
+                        <p>This is a project under development by <a href="http://cyntax.org"><i>Cyntax.</i></a> The site will be used as opensource code to study encryption. All code and files are opensource and free to use.</p>
+                    </div>
+                </footer>
+</body>
+
+</html>

@@ -1,0 +1,1125 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8' />
+    <title>jsSHA - SHA Hashes and HMAC in JavaScript</title>
+    <base href='https://coursesweb.net/' />
+    <meta name='description' content='jsSHA JavaScript library for the SHA hash family: SHA-1, SHA-224, SHA3-224, SHA-256, SHA3-256, SHA-384, SHA3-384, SHA-512, SHA3-512, SHAKE128, SHAKE25' />
+
+    <meta property='og:url' content='https://coursesweb.net/javascript/jssha-hash-hmac' />
+    <meta property='og:title' content='jsSHA - SHA Hashes and HMAC in JavaScript' />
+    <meta property='og:description' content='jsSHA JavaScript library for the SHA hash family: SHA-1, SHA-224, SHA3-224, SHA-256, SHA3-256, SHA-384, SHA3-384, SHA-512, SHA3-512, SHAKE128, SHAKE25' />
+    <meta property='og:image' content='https://coursesweb.net/imgs/logo.png' />
+    <meta property='og:type' content='website'>
+    <meta property='og:locale' content='en_US'>
+
+    <meta name='robots' content='ALL' />
+    <meta name='author' content='MarPlo' />
+    <link rel='icon' type='image/x-icon' href='imgs/site.ico' />
+    <meta name='viewport' content='width=device-width,minimum-scale=1,initial-scale=1' />
+    <link rel="stylesheet" href="template/css/style.css" />
+    <script>
+        var hideshow = ['.hide_show'];
+        var tab_hideshow = [];
+        var pjs = {
+            "ctid": 22,
+            "total_np": 0,
+            "pg_np": 0,
+            "idpg": 1457,
+            "sess_adv": 1,
+            "menu_side_dev": "&#9776; M",
+            "root_ct_id": 5,
+            "root_dir": "",
+            "share_tl": "S H A R E",
+            "is_mobile": ""
+        }; // json object with data from php
+    </script>
+    <script async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
+</head>
+
+<body>
+    <div id='header'>
+        <h1>jsSHA - SHA Hashes and HMAC in JavaScript</h1>
+        <h2 id="title_ctg">Javascript Course</h2>
+        <div id='menu_top'>
+            <a href="" title="Home">Home</a> <a href="html" title="HTML">HTML</a> <a href="css" title="CSS">CSS</a> <a href="php-mysql" title="PHP-MySQL">PHP-MySQL</a> <a href="ajax" title="Ajax">Ajax</a> <a href="blog" title="Blog">Blog</a> <a href='forum/' title='Forum MarPlo.net'>Forum</a>
+        </div>
+        <div id='adv_top'>
+            <ins class="adsbygoogle g_728_90" data-ad-client="ca-pub-9841755376220312" data-ad-slot="2824438748"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    <div id='p_content'>
+        <div id='adv_footer'><ins class="adsbygoogle g_336_280" data-ad-client="ca-pub-9841755376220312" data-ad-slot="2349060447"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <ul>
+            <li><a href='javascript/jssha-hash-hmac#hs1' title='Calculate online SHA Hashes and HMAC'>Calculate online SHA Hashes and HMAC</a></li>
+        </ul>
+        <br>
+
+        <div class='ptxt'>
+            <b>jsSHA</b> is a JavaScript implementation of the entire family of SHA hashes as defined in <span class='si'>FIPS PUB 180-4</span> and <span class='si'>FIPS PUB 202</span> (SHA-1, SHA-224, SHA3-224, SHA-256, SHA3-256, SHA-384, SHA3-384, SHA-512, SHA3-512, SHAKE128, and SHAKE256) as well as HMAC as defined in <span class='si'>FIPS PUB 198-1</span>.
+            <br> jsSHA is cross-browser compatible and works with Node.js.
+        </div>
+        <h4>Code of the jsSHA library</h4>
+        <p class='ptxt'>Click on the following code and copy it (or download it from: <a href='//github.com/Caligatio/jsSHA' title='jsSHA GitHub' target='_blank'>jsSHA GitHub</a>, sha.js in the "src/" folder) and save it in sha.js file on your server.</p>
+        <pre class='code'>
+/*
+ A JavaScript implementation of the SHA family of hashes, as
+ defined in FIPS PUB 180-4 and FIPS PUB 202, as well as the corresponding
+ HMAC implementation as defined in FIPS PUB 198a
+ Copyright 2008-2018 Brian Turek, 1998-2009 Paul Johnston &amp; Contributors
+ Distributed under the BSD License
+ For more information see:  http://caligatio.github.com/jsSHA/
+*/
+'use strict';(function(Y){function C(c,a,b){var e=0,h=[],n=0,g,l,d,f,m,q,u,r,I=!1,v=[],w=[],t,y=!1,z=!1,x=-1;b=b||{};g=b.encoding||&quot;UTF8&quot;;t=b.numRounds||1;if(t!==parseInt(t,10)||1&gt;t)throw Error(&quot;numRounds must a integer &gt;= 1&quot;);if(&quot;SHA-1&quot;===c)m=512,q=K,u=Z,f=160,r=function(a){return a.slice()};else if(0===c.lastIndexOf(&quot;SHA-&quot;,0))if(q=function(a,b){return L(a,b,c)},u=function(a,b,h,e){var k,f;if(&quot;SHA-224&quot;===c||&quot;SHA-256&quot;===c)k=(b+65&gt;&gt;&gt;9&lt;&lt;4)+15,f=16;else if(&quot;SHA-384&quot;===c||&quot;SHA-512&quot;===c)k=(b+129&gt;&gt;&gt;10&lt;&lt;
+5)+31,f=32;else throw Error(&quot;Unexpected error in SHA-2 implementation&quot;);for(;a.length&lt;=k;)a.push(0);a[b&gt;&gt;&gt;5]|=128&lt;&lt;24-b%32;b=b+h;a[k]=b&amp;4294967295;a[k-1]=b/4294967296|0;h=a.length;for(b=0;b&lt;h;b+=f)e=L(a.slice(b,b+f),e,c);if(&quot;SHA-224&quot;===c)a=[e[0],e[1],e[2],e[3],e[4],e[5],e[6]];else if(&quot;SHA-256&quot;===c)a=e;else if(&quot;SHA-384&quot;===c)a=[e[0].a,e[0].b,e[1].a,e[1].b,e[2].a,e[2].b,e[3].a,e[3].b,e[4].a,e[4].b,e[5].a,e[5].b];else if(&quot;SHA-512&quot;===c)a=[e[0].a,e[0].b,e[1].a,e[1].b,e[2].a,e[2].b,e[3].a,e[3].b,e[4].a,
+e[4].b,e[5].a,e[5].b,e[6].a,e[6].b,e[7].a,e[7].b];else throw Error(&quot;Unexpected error in SHA-2 implementation&quot;);return a},r=function(a){return a.slice()},&quot;SHA-224&quot;===c)m=512,f=224;else if(&quot;SHA-256&quot;===c)m=512,f=256;else if(&quot;SHA-384&quot;===c)m=1024,f=384;else if(&quot;SHA-512&quot;===c)m=1024,f=512;else throw Error(&quot;Chosen SHA variant is not supported&quot;);else if(0===c.lastIndexOf(&quot;SHA3-&quot;,0)||0===c.lastIndexOf(&quot;SHAKE&quot;,0)){var F=6;q=D;r=function(a){var c=[],e;for(e=0;5&gt;e;e+=1)c[e]=a[e].slice();return c};x=1;if(&quot;SHA3-224&quot;===
+c)m=1152,f=224;else if(&quot;SHA3-256&quot;===c)m=1088,f=256;else if(&quot;SHA3-384&quot;===c)m=832,f=384;else if(&quot;SHA3-512&quot;===c)m=576,f=512;else if(&quot;SHAKE128&quot;===c)m=1344,f=-1,F=31,z=!0;else if(&quot;SHAKE256&quot;===c)m=1088,f=-1,F=31,z=!0;else throw Error(&quot;Chosen SHA variant is not supported&quot;);u=function(a,c,e,b,h){e=m;var k=F,f,g=[],n=e&gt;&gt;&gt;5,l=0,d=c&gt;&gt;&gt;5;for(f=0;f&lt;d&amp;&amp;c&gt;=e;f+=n)b=D(a.slice(f,f+n),b),c-=e;a=a.slice(f);for(c%=e;a.length&lt;n;)a.push(0);f=c&gt;&gt;&gt;3;a[f&gt;&gt;2]^=k&lt;&lt;f%4*8;a[n-1]^=2147483648;for(b=D(a,b);32*g.length&lt;h;){a=b[l%
+5][l/5|0];g.push(a.b);if(32*g.length&gt;=h)break;g.push(a.a);l+=1;0===64*l%e&amp;&amp;D(null,b)}return g}}else throw Error(&quot;Chosen SHA variant is not supported&quot;);d=M(a,g,x);l=A(c);this.setHMACKey=function(a,b,h){var k;if(!0===I)throw Error(&quot;HMAC key already set&quot;);if(!0===y)throw Error(&quot;Cannot set HMAC key after calling update&quot;);if(!0===z)throw Error(&quot;SHAKE is not supported for HMAC&quot;);g=(h||{}).encoding||&quot;UTF8&quot;;b=M(b,g,x)(a);a=b.binLen;b=b.value;k=m&gt;&gt;&gt;3;h=k/4-1;if(k&lt;a/8){for(b=u(b,a,0,A(c),f);b.length&lt;=h;)b.push(0);
+b[h]&amp;=4294967040}else if(k&gt;a/8){for(;b.length&lt;=h;)b.push(0);b[h]&amp;=4294967040}for(a=0;a&lt;=h;a+=1)v[a]=b[a]^909522486,w[a]=b[a]^1549556828;l=q(v,l);e=m;I=!0};this.update=function(a){var c,b,k,f=0,g=m&gt;&gt;&gt;5;c=d(a,h,n);a=c.binLen;b=c.value;c=a&gt;&gt;&gt;5;for(k=0;k&lt;c;k+=g)f+m&lt;=a&amp;&amp;(l=q(b.slice(k,k+g),l),f+=m);e+=f;h=b.slice(f&gt;&gt;&gt;5);n=a%m;y=!0};this.getHash=function(a,b){var k,g,d,m;if(!0===I)throw Error(&quot;Cannot call getHash after setting HMAC key&quot;);d=N(b);if(!0===z){if(-1===d.shakeLen)throw Error(&quot;shakeLen must be specified in options&quot;);
+f=d.shakeLen}switch(a){case &quot;HEX&quot;:k=function(a){return O(a,f,x,d)};break;case &quot;B64&quot;:k=function(a){return P(a,f,x,d)};break;case &quot;BYTES&quot;:k=function(a){return Q(a,f,x)};break;case &quot;ARRAYBUFFER&quot;:try{g=new ArrayBuffer(0)}catch(p){throw Error(&quot;ARRAYBUFFER not supported by this environment&quot;);}k=function(a){return R(a,f,x)};break;default:throw Error(&quot;format must be HEX, B64, BYTES, or ARRAYBUFFER&quot;);}m=u(h.slice(),n,e,r(l),f);for(g=1;g&lt;t;g+=1)!0===z&amp;&amp;0!==f%32&amp;&amp;(m[m.length-1]&amp;=16777215&gt;&gt;&gt;24-f%32),m=u(m,f,
+0,A(c),f);return k(m)};this.getHMAC=function(a,b){var k,g,d,p;if(!1===I)throw Error(&quot;Cannot call getHMAC without first setting HMAC key&quot;);d=N(b);switch(a){case &quot;HEX&quot;:k=function(a){return O(a,f,x,d)};break;case &quot;B64&quot;:k=function(a){return P(a,f,x,d)};break;case &quot;BYTES&quot;:k=function(a){return Q(a,f,x)};break;case &quot;ARRAYBUFFER&quot;:try{k=new ArrayBuffer(0)}catch(v){throw Error(&quot;ARRAYBUFFER not supported by this environment&quot;);}k=function(a){return R(a,f,x)};break;default:throw Error(&quot;outputFormat must be HEX, B64, BYTES, or ARRAYBUFFER&quot;);
+}g=u(h.slice(),n,e,r(l),f);p=q(w,A(c));p=u(g,f,m,p,f);return k(p)}}function b(c,a){this.a=c;this.b=a}function O(c,a,b,e){var h=&quot;&quot;;a/=8;var n,g,d;d=-1===b?3:0;for(n=0;n&lt;a;n+=1)g=c[n&gt;&gt;&gt;2]&gt;&gt;&gt;8*(d+n%4*b),h+=&quot;0123456789abcdef&quot;.charAt(g&gt;&gt;&gt;4&amp;15)+&quot;0123456789abcdef&quot;.charAt(g&amp;15);return e.outputUpper?h.toUpperCase():h}function P(c,a,b,e){var h=&quot;&quot;,n=a/8,g,d,p,f;f=-1===b?3:0;for(g=0;g&lt;n;g+=3)for(d=g+1&lt;n?c[g+1&gt;&gt;&gt;2]:0,p=g+2&lt;n?c[g+2&gt;&gt;&gt;2]:0,p=(c[g&gt;&gt;&gt;2]&gt;&gt;&gt;8*(f+g%4*b)&amp;255)&lt;&lt;16|(d&gt;&gt;&gt;8*(f+(g+1)%4*b)&amp;255)&lt;&lt;8|p&gt;&gt;&gt;8*(f+
+(g+2)%4*b)&amp;255,d=0;4&gt;d;d+=1)8*g+6*d&lt;=a?h+=&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;.charAt(p&gt;&gt;&gt;6*(3-d)&amp;63):h+=e.b64Pad;return h}function Q(c,a,b){var e=&quot;&quot;;a/=8;var h,d,g;g=-1===b?3:0;for(h=0;h&lt;a;h+=1)d=c[h&gt;&gt;&gt;2]&gt;&gt;&gt;8*(g+h%4*b)&amp;255,e+=String.fromCharCode(d);return e}function R(c,a,b){a/=8;var e,h=new ArrayBuffer(a),d,g;g=new Uint8Array(h);d=-1===b?3:0;for(e=0;e&lt;a;e+=1)g[e]=c[e&gt;&gt;&gt;2]&gt;&gt;&gt;8*(d+e%4*b)&amp;255;return h}function N(c){var a={outputUpper:!1,b64Pad:&quot;=&quot;,shakeLen:-1};c=c||{};
+a.outputUpper=c.outputUpper||!1;!0===c.hasOwnProperty(&quot;b64Pad&quot;)&amp;&amp;(a.b64Pad=c.b64Pad);if(!0===c.hasOwnProperty(&quot;shakeLen&quot;)){if(0!==c.shakeLen%8)throw Error(&quot;shakeLen must be a multiple of 8&quot;);a.shakeLen=c.shakeLen}if(&quot;boolean&quot;!==typeof a.outputUpper)throw Error(&quot;Invalid outputUpper formatting option&quot;);if(&quot;string&quot;!==typeof a.b64Pad)throw Error(&quot;Invalid b64Pad formatting option&quot;);return a}function M(c,a,b){switch(a){case &quot;UTF8&quot;:case &quot;UTF16BE&quot;:case &quot;UTF16LE&quot;:break;default:throw Error(&quot;encoding must be UTF8, UTF16BE, or UTF16LE&quot;);
+}switch(c){case &quot;HEX&quot;:c=function(a,c,d){var g=a.length,l,p,f,m,q,u;if(0!==g%2)throw Error(&quot;String of HEX type must be in byte increments&quot;);c=c||[0];d=d||0;q=d&gt;&gt;&gt;3;u=-1===b?3:0;for(l=0;l&lt;g;l+=2){p=parseInt(a.substr(l,2),16);if(isNaN(p))throw Error(&quot;String of HEX type contains invalid characters&quot;);m=(l&gt;&gt;&gt;1)+q;for(f=m&gt;&gt;&gt;2;c.length&lt;=f;)c.push(0);c[f]|=p&lt;&lt;8*(u+m%4*b)}return{value:c,binLen:4*g+d}};break;case &quot;TEXT&quot;:c=function(c,h,d){var g,l,p=0,f,m,q,u,r,t;h=h||[0];d=d||0;q=d&gt;&gt;&gt;3;if(&quot;UTF8&quot;===a)for(t=-1===
+b?3:0,f=0;f&lt;c.length;f+=1)for(g=c.charCodeAt(f),l=[],128&gt;g?l.push(g):2048&gt;g?(l.push(192|g&gt;&gt;&gt;6),l.push(128|g&amp;63)):55296&gt;g||57344&lt;=g?l.push(224|g&gt;&gt;&gt;12,128|g&gt;&gt;&gt;6&amp;63,128|g&amp;63):(f+=1,g=65536+((g&amp;1023)&lt;&lt;10|c.charCodeAt(f)&amp;1023),l.push(240|g&gt;&gt;&gt;18,128|g&gt;&gt;&gt;12&amp;63,128|g&gt;&gt;&gt;6&amp;63,128|g&amp;63)),m=0;m&lt;l.length;m+=1){r=p+q;for(u=r&gt;&gt;&gt;2;h.length&lt;=u;)h.push(0);h[u]|=l[m]&lt;&lt;8*(t+r%4*b);p+=1}else if(&quot;UTF16BE&quot;===a||&quot;UTF16LE&quot;===a)for(t=-1===b?2:0,l=&quot;UTF16LE&quot;===a&amp;&amp;1!==b||&quot;UTF16LE&quot;!==a&amp;&amp;1===b,f=0;f&lt;c.length;f+=1){g=c.charCodeAt(f);
+!0===l&amp;&amp;(m=g&amp;255,g=m&lt;&lt;8|g&gt;&gt;&gt;8);r=p+q;for(u=r&gt;&gt;&gt;2;h.length&lt;=u;)h.push(0);h[u]|=g&lt;&lt;8*(t+r%4*b);p+=2}return{value:h,binLen:8*p+d}};break;case &quot;B64&quot;:c=function(a,c,d){var g=0,l,p,f,m,q,u,r,t;if(-1===a.search(/^[a-zA-Z0-9=+\/]+$/))throw Error(&quot;Invalid character in base-64 string&quot;);p=a.indexOf(&quot;=&quot;);a=a.replace(/\=/g,&quot;&quot;);if(-1!==p&amp;&amp;p&lt;a.length)throw Error(&quot;Invalid '=' found in base-64 string&quot;);c=c||[0];d=d||0;u=d&gt;&gt;&gt;3;t=-1===b?3:0;for(p=0;p&lt;a.length;p+=4){q=a.substr(p,4);for(f=m=0;f&lt;q.length;f+=1)l=&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;.indexOf(q[f]),
+m|=l&lt;&lt;18-6*f;for(f=0;f&lt;q.length-1;f+=1){r=g+u;for(l=r&gt;&gt;&gt;2;c.length&lt;=l;)c.push(0);c[l]|=(m&gt;&gt;&gt;16-8*f&amp;255)&lt;&lt;8*(t+r%4*b);g+=1}}return{value:c,binLen:8*g+d}};break;case &quot;BYTES&quot;:c=function(a,c,d){var g,l,p,f,m,q;c=c||[0];d=d||0;p=d&gt;&gt;&gt;3;q=-1===b?3:0;for(l=0;l&lt;a.length;l+=1)g=a.charCodeAt(l),m=l+p,f=m&gt;&gt;&gt;2,c.length&lt;=f&amp;&amp;c.push(0),c[f]|=g&lt;&lt;8*(q+m%4*b);return{value:c,binLen:8*a.length+d}};break;case &quot;ARRAYBUFFER&quot;:try{c=new ArrayBuffer(0)}catch(e){throw Error(&quot;ARRAYBUFFER not supported by this environment&quot;);}c=
+function(a,c,d){var g,l,p,f,m,q;c=c||[0];d=d||0;l=d&gt;&gt;&gt;3;m=-1===b?3:0;q=new Uint8Array(a);for(g=0;g&lt;a.byteLength;g+=1)f=g+l,p=f&gt;&gt;&gt;2,c.length&lt;=p&amp;&amp;c.push(0),c[p]|=q[g]&lt;&lt;8*(m+f%4*b);return{value:c,binLen:8*a.byteLength+d}};break;default:throw Error(&quot;format must be HEX, TEXT, B64, BYTES, or ARRAYBUFFER&quot;);}return c}function y(c,a){return c&lt;&lt;a|c&gt;&gt;&gt;32-a}function S(c,a){return 32&lt;a?(a-=32,new b(c.b&lt;&lt;a|c.a&gt;&gt;&gt;32-a,c.a&lt;&lt;a|c.b&gt;&gt;&gt;32-a)):0!==a?new b(c.a&lt;&lt;a|c.b&gt;&gt;&gt;32-a,c.b&lt;&lt;a|c.a&gt;&gt;&gt;32-a):c}function w(c,a){return c&gt;&gt;&gt;
+a|c&lt;&lt;32-a}function t(c,a){var k=null,k=new b(c.a,c.b);return k=32&gt;=a?new b(k.a&gt;&gt;&gt;a|k.b&lt;&lt;32-a&amp;4294967295,k.b&gt;&gt;&gt;a|k.a&lt;&lt;32-a&amp;4294967295):new b(k.b&gt;&gt;&gt;a-32|k.a&lt;&lt;64-a&amp;4294967295,k.a&gt;&gt;&gt;a-32|k.b&lt;&lt;64-a&amp;4294967295)}function T(c,a){var k=null;return k=32&gt;=a?new b(c.a&gt;&gt;&gt;a,c.b&gt;&gt;&gt;a|c.a&lt;&lt;32-a&amp;4294967295):new b(0,c.a&gt;&gt;&gt;a-32)}function aa(c,a,b){return c&amp;a^~c&amp;b}function ba(c,a,k){return new b(c.a&amp;a.a^~c.a&amp;k.a,c.b&amp;a.b^~c.b&amp;k.b)}function U(c,a,b){return c&amp;a^c&amp;b^a&amp;b}function ca(c,a,k){return new b(c.a&amp;a.a^c.a&amp;k.a^a.a&amp;
+k.a,c.b&amp;a.b^c.b&amp;k.b^a.b&amp;k.b)}function da(c){return w(c,2)^w(c,13)^w(c,22)}function ea(c){var a=t(c,28),k=t(c,34);c=t(c,39);return new b(a.a^k.a^c.a,a.b^k.b^c.b)}function fa(c){return w(c,6)^w(c,11)^w(c,25)}function ga(c){var a=t(c,14),k=t(c,18);c=t(c,41);return new b(a.a^k.a^c.a,a.b^k.b^c.b)}function ha(c){return w(c,7)^w(c,18)^c&gt;&gt;&gt;3}function ia(c){var a=t(c,1),k=t(c,8);c=T(c,7);return new b(a.a^k.a^c.a,a.b^k.b^c.b)}function ja(c){return w(c,17)^w(c,19)^c&gt;&gt;&gt;10}function ka(c){var a=t(c,19),k=t(c,61);
+c=T(c,6);return new b(a.a^k.a^c.a,a.b^k.b^c.b)}function G(c,a){var b=(c&amp;65535)+(a&amp;65535);return((c&gt;&gt;&gt;16)+(a&gt;&gt;&gt;16)+(b&gt;&gt;&gt;16)&amp;65535)&lt;&lt;16|b&amp;65535}function la(c,a,b,e){var h=(c&amp;65535)+(a&amp;65535)+(b&amp;65535)+(e&amp;65535);return((c&gt;&gt;&gt;16)+(a&gt;&gt;&gt;16)+(b&gt;&gt;&gt;16)+(e&gt;&gt;&gt;16)+(h&gt;&gt;&gt;16)&amp;65535)&lt;&lt;16|h&amp;65535}function H(c,a,b,e,h){var d=(c&amp;65535)+(a&amp;65535)+(b&amp;65535)+(e&amp;65535)+(h&amp;65535);return((c&gt;&gt;&gt;16)+(a&gt;&gt;&gt;16)+(b&gt;&gt;&gt;16)+(e&gt;&gt;&gt;16)+(h&gt;&gt;&gt;16)+(d&gt;&gt;&gt;16)&amp;65535)&lt;&lt;16|d&amp;65535}function ma(c,a){var d,e,h;d=(c.b&amp;65535)+(a.b&amp;65535);e=(c.b&gt;&gt;&gt;16)+
+(a.b&gt;&gt;&gt;16)+(d&gt;&gt;&gt;16);h=(e&amp;65535)&lt;&lt;16|d&amp;65535;d=(c.a&amp;65535)+(a.a&amp;65535)+(e&gt;&gt;&gt;16);e=(c.a&gt;&gt;&gt;16)+(a.a&gt;&gt;&gt;16)+(d&gt;&gt;&gt;16);return new b((e&amp;65535)&lt;&lt;16|d&amp;65535,h)}function na(c,a,d,e){var h,n,g;h=(c.b&amp;65535)+(a.b&amp;65535)+(d.b&amp;65535)+(e.b&amp;65535);n=(c.b&gt;&gt;&gt;16)+(a.b&gt;&gt;&gt;16)+(d.b&gt;&gt;&gt;16)+(e.b&gt;&gt;&gt;16)+(h&gt;&gt;&gt;16);g=(n&amp;65535)&lt;&lt;16|h&amp;65535;h=(c.a&amp;65535)+(a.a&amp;65535)+(d.a&amp;65535)+(e.a&amp;65535)+(n&gt;&gt;&gt;16);n=(c.a&gt;&gt;&gt;16)+(a.a&gt;&gt;&gt;16)+(d.a&gt;&gt;&gt;16)+(e.a&gt;&gt;&gt;16)+(h&gt;&gt;&gt;16);return new b((n&amp;65535)&lt;&lt;16|h&amp;65535,g)}function oa(c,a,d,e,h){var n,g,l;n=(c.b&amp;
+65535)+(a.b&amp;65535)+(d.b&amp;65535)+(e.b&amp;65535)+(h.b&amp;65535);g=(c.b&gt;&gt;&gt;16)+(a.b&gt;&gt;&gt;16)+(d.b&gt;&gt;&gt;16)+(e.b&gt;&gt;&gt;16)+(h.b&gt;&gt;&gt;16)+(n&gt;&gt;&gt;16);l=(g&amp;65535)&lt;&lt;16|n&amp;65535;n=(c.a&amp;65535)+(a.a&amp;65535)+(d.a&amp;65535)+(e.a&amp;65535)+(h.a&amp;65535)+(g&gt;&gt;&gt;16);g=(c.a&gt;&gt;&gt;16)+(a.a&gt;&gt;&gt;16)+(d.a&gt;&gt;&gt;16)+(e.a&gt;&gt;&gt;16)+(h.a&gt;&gt;&gt;16)+(n&gt;&gt;&gt;16);return new b((g&amp;65535)&lt;&lt;16|n&amp;65535,l)}function B(c,a){return new b(c.a^a.a,c.b^a.b)}function A(c){var a=[],d;if(&quot;SHA-1&quot;===c)a=[1732584193,4023233417,2562383102,271733878,3285377520];else if(0===c.lastIndexOf(&quot;SHA-&quot;,0))switch(a=
+[3238371032,914150663,812702999,4144912697,4290775857,1750603025,1694076839,3204075428],d=[1779033703,3144134277,1013904242,2773480762,1359893119,2600822924,528734635,1541459225],c){case &quot;SHA-224&quot;:break;case &quot;SHA-256&quot;:a=d;break;case &quot;SHA-384&quot;:a=[new b(3418070365,a[0]),new b(1654270250,a[1]),new b(2438529370,a[2]),new b(355462360,a[3]),new b(1731405415,a[4]),new b(41048885895,a[5]),new b(3675008525,a[6]),new b(1203062813,a[7])];break;case &quot;SHA-512&quot;:a=[new b(d[0],4089235720),new b(d[1],2227873595),
+new b(d[2],4271175723),new b(d[3],1595750129),new b(d[4],2917565137),new b(d[5],725511199),new b(d[6],4215389547),new b(d[7],327033209)];break;default:throw Error(&quot;Unknown SHA variant&quot;);}else if(0===c.lastIndexOf(&quot;SHA3-&quot;,0)||0===c.lastIndexOf(&quot;SHAKE&quot;,0))for(c=0;5&gt;c;c+=1)a[c]=[new b(0,0),new b(0,0),new b(0,0),new b(0,0),new b(0,0)];else throw Error(&quot;No SHA variants supported&quot;);return a}function K(c,a){var b=[],e,d,n,g,l,p,f;e=a[0];d=a[1];n=a[2];g=a[3];l=a[4];for(f=0;80&gt;f;f+=1)b[f]=16&gt;f?c[f]:y(b[f-
+3]^b[f-8]^b[f-14]^b[f-16],1),p=20&gt;f?H(y(e,5),d&amp;n^~d&amp;g,l,1518500249,b[f]):40&gt;f?H(y(e,5),d^n^g,l,1859775393,b[f]):60&gt;f?H(y(e,5),U(d,n,g),l,2400959708,b[f]):H(y(e,5),d^n^g,l,3395469782,b[f]),l=g,g=n,n=y(d,30),d=e,e=p;a[0]=G(e,a[0]);a[1]=G(d,a[1]);a[2]=G(n,a[2]);a[3]=G(g,a[3]);a[4]=G(l,a[4]);return a}function Z(c,a,b,e){var d;for(d=(a+65&gt;&gt;&gt;9&lt;&lt;4)+15;c.length&lt;=d;)c.push(0);c[a&gt;&gt;&gt;5]|=128&lt;&lt;24-a%32;a+=b;c[d]=a&amp;4294967295;c[d-1]=a/4294967296|0;a=c.length;for(d=0;d&lt;a;d+=16)e=K(c.slice(d,d+16),e);return e}function L(c,
+a,k){var e,h,n,g,l,p,f,m,q,u,r,t,v,w,y,A,z,x,F,B,C,D,E=[],J;if(&quot;SHA-224&quot;===k||&quot;SHA-256&quot;===k)u=64,t=1,D=Number,v=G,w=la,y=H,A=ha,z=ja,x=da,F=fa,C=U,B=aa,J=d;else if(&quot;SHA-384&quot;===k||&quot;SHA-512&quot;===k)u=80,t=2,D=b,v=ma,w=na,y=oa,A=ia,z=ka,x=ea,F=ga,C=ca,B=ba,J=V;else throw Error(&quot;Unexpected error in SHA-2 implementation&quot;);k=a[0];e=a[1];h=a[2];n=a[3];g=a[4];l=a[5];p=a[6];f=a[7];for(r=0;r&lt;u;r+=1)16&gt;r?(q=r*t,m=c.length&lt;=q?0:c[q],q=c.length&lt;=q+1?0:c[q+1],E[r]=new D(m,q)):E[r]=w(z(E[r-2]),E[r-7],A(E[r-15]),E[r-
+16]),m=y(f,F(g),B(g,l,p),J[r],E[r]),q=v(x(k),C(k,e,h)),f=p,p=l,l=g,g=v(n,m),n=h,h=e,e=k,k=v(m,q);a[0]=v(k,a[0]);a[1]=v(e,a[1]);a[2]=v(h,a[2]);a[3]=v(n,a[3]);a[4]=v(g,a[4]);a[5]=v(l,a[5]);a[6]=v(p,a[6]);a[7]=v(f,a[7]);return a}function D(c,a){var d,e,h,n,g=[],l=[];if(null!==c)for(e=0;e&lt;c.length;e+=2)a[(e&gt;&gt;&gt;1)%5][(e&gt;&gt;&gt;1)/5|0]=B(a[(e&gt;&gt;&gt;1)%5][(e&gt;&gt;&gt;1)/5|0],new b(c[e+1],c[e]));for(d=0;24&gt;d;d+=1){n=A(&quot;SHA3-&quot;);for(e=0;5&gt;e;e+=1){h=a[e][0];var p=a[e][1],f=a[e][2],m=a[e][3],q=a[e][4];g[e]=new b(h.a^p.a^f.a^
+m.a^q.a,h.b^p.b^f.b^m.b^q.b)}for(e=0;5&gt;e;e+=1)l[e]=B(g[(e+4)%5],S(g[(e+1)%5],1));for(e=0;5&gt;e;e+=1)for(h=0;5&gt;h;h+=1)a[e][h]=B(a[e][h],l[e]);for(e=0;5&gt;e;e+=1)for(h=0;5&gt;h;h+=1)n[h][(2*e+3*h)%5]=S(a[e][h],W[e][h]);for(e=0;5&gt;e;e+=1)for(h=0;5&gt;h;h+=1)a[e][h]=B(n[e][h],new b(~n[(e+1)%5][h].a&amp;n[(e+2)%5][h].a,~n[(e+1)%5][h].b&amp;n[(e+2)%5][h].b));a[0][0]=B(a[0][0],X[d])}return a}var d,V,W,X;d=[1116352408,1899447441,3049323471,3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,
+1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,604807628,770255983,1249150122,1555081692,1996064986,2554220882,2821834349,2952996808,3210313671,3336571891,3584528711,113926993,338241895,666307205,773529912,1294757372,1396182291,1695183700,1986661051,2177026350,2456956037,2730485921,2820302411,3259730800,3345764771,3516065817,3600352804,4094571909,275423344,430227734,506948616,659060556,883997877,958139571,1322822218,1537002063,1747873779,1955562222,2024104815,
+2227730452,2361852424,2428436474,2756734187,3204031479,3329325298];V=[new b(d[0],3609767458),new b(d[1],602891725),new b(d[2],3964484399),new b(d[3],2173295548),new b(d[4],4081628472),new b(d[5],3053834265),new b(d[6],2937671579),new b(d[7],3664609560),new b(d[8],2734883394),new b(d[9],1164996542),new b(d[10],1323610764),new b(d[11],3590304994),new b(d[12],4068182383),new b(d[13],991336113),new b(d[14],633803317),new b(d[15],3479774868),new b(d[16],2666613458),new b(d[17],944711139),new b(d[18],2341262773),
+new b(d[19],2007800933),new b(d[20],1495990901),new b(d[21],1856431235),new b(d[22],3175218132),new b(d[23],2198950837),new b(d[24],3999719339),new b(d[25],766784016),new b(d[26],2566594879),new b(d[27],3203337956),new b(d[28],1034457026),new b(d[29],2466948901),new b(d[30],3758326383),new b(d[31],168717936),new b(d[32],1188179964),new b(d[33],1546045734),new b(d[34],1522805485),new b(d[35],2643833823),new b(d[36],2343527390),new b(d[37],1014477480),new b(d[38],1206759142),new b(d[39],344077627),
+new b(d[40],1290863460),new b(d[41],3158454273),new b(d[42],3505952657),new b(d[43],106217008),new b(d[44],3606008344),new b(d[45],1432725776),new b(d[46],1467031594),new b(d[47],851169720),new b(d[48],3100823752),new b(d[49],1363258195),new b(d[50],3750685593),new b(d[51],3785050280),new b(d[52],3318307427),new b(d[53],3812723403),new b(d[54],2003034995),new b(d[55],3602036899),new b(d[56],1575990012),new b(d[57],1125592928),new b(d[58],2716904306),new b(d[59],442776044),new b(d[60],593698344),new b(d[61],
+3733110249),new b(d[62],2999351573),new b(d[63],3815920427),new b(3391569614,3928383900),new b(3515267271,566280711),new b(3940187606,3454069534),new b(4118630271,4000239992),new b(116418474,1914138554),new b(174292421,2731055270),new b(289380356,3203993006),new b(460393269,320620315),new b(685471733,587496836),new b(852142971,1086792851),new b(1017036298,365543100),new b(1126000580,2618297676),new b(1288033470,3409855158),new b(1501505948,4234509866),new b(1607167915,987167468),new b(1816402316,
+1246189591)];X=[new b(0,1),new b(0,32898),new b(2147483648,32906),new b(2147483648,2147516416),new b(0,32907),new b(0,2147483649),new b(2147483648,2147516545),new b(2147483648,32777),new b(0,138),new b(0,136),new b(0,2147516425),new b(0,2147483658),new b(0,2147516555),new b(2147483648,139),new b(2147483648,32905),new b(2147483648,32771),new b(2147483648,32770),new b(2147483648,128),new b(0,32778),new b(2147483648,2147483658),new b(2147483648,2147516545),new b(2147483648,32896),new b(0,2147483649),
+new b(2147483648,2147516424)];W=[[0,36,3,41,18],[1,44,10,45,2],[62,6,43,15,61],[28,55,25,21,56],[27,20,39,8,14]];&quot;function&quot;===typeof define&amp;&amp;define.amd?define(function(){return C}):&quot;undefined&quot;!==typeof exports?(&quot;undefined&quot;!==typeof module&amp;&amp;module.exports&amp;&amp;(module.exports=C),exports=C):Y.jsSHA=C})(this);
+
+</pre>
+        <br>
+        <h4>Usage</h4> Include the sha.js JavaScript file in the header of your page:
+        <div class='code'>&lt;script src='/path/to/sha.js'&gt;&lt;/script&gt;</div>
+        <br> - Use the following syntax to get the desired hash type:
+        <pre class='code syntax'>
+// SHA-Type: SHA-1, SHA-224, SHA3-224, SHA-256, SHA3-256, SHA-384, SHA3-384, SHA-512, SHA3-512, SHAKE128, SHAKE256
+// Input_Type: HEX, TEXT, BYTES, ARRAYBUFFER, B64 (Base-64)
+
+var sha_ob = new jsSHA('SHA-Type', 'Input_Type');
+sha_ob.update('Add your text');
+var hash = sha_ob.getHash('HEX');
+</pre> 1. Instantiate a new jsSHA object (here sha_ob), using <code class='cl_b sb'>new jsSHA()</code> with the desired hash type (<span class='sb'>'SHA-Type'</span>), and input type (<span class='sb'>'Input_Type'</span>).
+        <br> - The hash type (<span class='sb'>'SHA-Type'</span>) can be one of: <span class='sbi'>SHA-1, SHA-224, SHA3-224, SHA-256, SHA3-256, SHA-384, SHA3-384, SHA-512, SHA3-512, SHAKE128, SHAKE256</span>.
+        <br> - The input type can be one of: <span class='sbi'>HEX, TEXT, BYTES, ARRAYBUFFER, B64</span> (B64 is for Base-64).
+        <br> 2. Then stream in input using the update object function, <code class='cl_b sb'>sha_ob.update()</code> with the text you want {you can call it multiple times if it is needed to append other text).
+        <br> 3. Finally, call <code class='cl_b sb'>sha_ob.getHash()</code> with the output type as its argument (<span class='sbi'>B64, HEX, BYTES, ARRAYBUFFER</span>).
+        <br>
+        <br>
+
+        <h4>HMAC</h4>
+        <pre class='code syntax'>
+var sha_ob = new jsSHA('SHA-Type', 'Input_Type');
+sha_ob.setHMACKey('my_key', 'TEXT');
+sha_ob.update('Add your text');
+var hmac = sha_ob.getHMAC('HEX');
+</pre> 1. Instantiate a <span class='sb'>new jsSHA()</span> object the same way as for hashing.
+        <br> 2. Then set the HMAC key to be used by calling <code class='cl_b sb'>sha_ob.setHMACKey()</code> with the key (here <span class='si'>'my_key'</span>), and its input type (here <span class='sb'>TEXT</span>). This MUST be done before calling <code class='cl_b sb'>sha_ob.update()</code>.
+        <br> 3. Then stream in the input using the update object function just like hashing, <code class='cl_b sb'>sha_ob.update()</code> with the text you want.
+        <br> 4. Finally, get the HMAC by calling the <code class='cl_b sb'>sha_ob.getHMAC()</code> method with the output type as its argument (<span class='sbi'>B64, HEX, BYTES, ARRAYBUFFER</span>).
+        <br>
+        <br>
+        <div class='note'>
+            <code class='cl_b sb'>setHMACKey()</code> takes the same input types as the constructor (jsSHA() ).
+            <br>
+            <code class='cl_b sb'>getHMAC()</code> takes the same inputs as <code class='cl_b sb'>getHash()</code>.
+            <br>
+            <br> - You cannot calculate both the hash and HMAC using the same object.
+        </div>
+        <br> Example to calculate the SHA-512 HMAC of the string "Peace is Good" with the key "ab3":
+        <pre class='code'>
+var sha_ob = new jsSHA('SHA-512', 'TEXT');
+sha_ob.setHMACKey('ab3', 'TEXT');
+sha_ob.update('Peace is Good');
+var hmac = sha_ob.getHMAC('HEX');
+
+alert(hmac)
+</pre> Result:
+        <div class='apare'>f900f729a4add8eb6cbfe83e3a6f4545044afc7657b40d386a5b94768fc511f2fff7db412efd0a5edb4756f964577be1d107140dcebd59e5a09e52152e91af81</div>
+        <br>
+        <h4>Node.js</h4> jsSHA is available through NPM and be installed by doing:
+        <div class='code'>npm install jssha</div>
+        <br> To use the module, first require it using:
+        <div class='code'>jsSHA = require('jssha';);</div>
+        <br>
+
+        <h3 id='hs1'>Calculate online SHA Hashes and HMAC</h3>
+        <form action='#'>
+            <fieldset>
+                <legend class='sb'>SHA Hashing Demo</legend>
+                <p class='ptxt'>Insert your text to be hashed, input type, the SHA variant you wish to use, and the output format.</p>
+                <div>
+                    <label>Input Text:
+                        <input type='text' size='75' id='hshInpText' onkeyup='calcHash()' />
+                    </label>
+                </div>
+                <div>Input Type:
+                    <select id='hshInpType' onchange='calcHash()'>
+                        <option value='B64'>Base-64</option>
+                        <option selected='selected'>TEXT</option>
+                        <option>HEX</option>
+                    </select>
+                </div>
+                <div>SHA Variant:
+                    <select id='hashVariant' onchange='calcHash()'>
+                        <option>SHA-1</option>
+                        <option>SHA-224</option>
+                        <option>SHA3-224</option>
+                        <option>SHA-256</option>
+                        <option>SHA3-256</option>
+                        <option>SHA-384</option>
+                        <option>SHA3-384</option>
+                        <option>SHA-512</option>
+                        <option>SHA3-512</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Number of Rounds:
+                        <input type='text' size='5' id='hashRounds' value='1' onkeyup='calcHash()' />
+                    </label>
+                </div>
+                <div>Output Type:
+                    <select id='hshOutType' onchange='calcHash()'>
+                        <option value='B64'>Base-64</option>
+                        <option selected='selected'>HEX</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Output Hash:
+                        <input type='text' size='75' id='hshOutText' style='background-color: #b1ceed' />
+                    </label>
+                </div>
+            </fieldset>
+            <br>
+            <br>
+            <fieldset>
+                <legend class='sb'>HMAC Demo</legend>
+                <p class='ptxt'>Insert your text to be hashed, text type, key, key type, the SHA variant you wish to use, and the output format.</p>
+                <div>
+                    <label>Input Text:
+                        <input type='text' size='75' id='hmacInputText' onkeyup='calcHMAC()' />
+                    </label>
+                </div>
+                <div>Input Type:
+                    <select id='hmacTextType' onchange='calcHMAC()'>
+                        <option value='B64'>Base-64</option>
+                        <option selected='selected'>TEXT</option>
+                        <option>HEX</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Key:
+                        <input type='text' size='75' id='hmacInputKey' onkeyup='calcHMAC()' />
+                    </label>
+                </div>
+                <div>Key Type:
+                    <select id='hmacKeyType' onchange='calcHMAC()'>
+                        <option value='B64'>Base-64</option>
+                        <option selected='selected'>TEXT</option>
+                        <option>HEX</option>
+                    </select>
+                </div>
+                <div>SHA Variant:
+                    <select id='hmacVariant' onchange='calcHMAC()'>
+                        <option>SHA-1</option>
+                        <option>SHA-224</option>
+                        <option>SHA3-224</option>
+                        <option>SHA-256</option>
+                        <option>SHA3-256</option>
+                        <option>SHA-384</option>
+                        <option>SHA3-384</option>
+                        <option>SHA-512</option>
+                        <option>SHA3-512</option>
+                    </select>
+                </div>
+                <div>Output Type:
+                    <select id='hmacOutputType' onchange='calcHMAC()'>
+                        <option value='B64'>Base-64</option>
+                        <option selected='selected'>HEX</option>
+                    </select>
+                </div>
+                <div>
+                    <label for='hmacOutputText'>Output Hash:</label>
+                    <input type='text' size='75' id='hmacOutputText' style='background-color:#b1ceed' />
+                </div>
+            </fieldset>
+        </form>
+        <br>
+
+        <div class='note'>From: <a href='//caligatio.github.io/jsSHA/' title='jsSHA - SHA Hashes in JavaScript'>jsSHA - SHA Hashes in JavaScript</a></div>
+        <script>
+            'use strict';
+            (function(Y) {
+                function C(c, a, b) {
+                    var e = 0,
+                        h = [],
+                        n = 0,
+                        g, l, d, f, m, q, u, r, I = !1,
+                        v = [],
+                        w = [],
+                        t, y = !1,
+                        z = !1,
+                        x = -1;
+                    b = b || {};
+                    g = b.encoding || "UTF8";
+                    t = b.numRounds || 1;
+                    if (t !== parseInt(t, 10) || 1 > t) throw Error("numRounds must a integer >= 1");
+                    if ("SHA-1" === c) m = 512, q = K, u = Z, f = 160, r = function(a) {
+                        return a.slice()
+                    };
+                    else if (0 === c.lastIndexOf("SHA-", 0))
+                        if (q = function(a, b) {
+                                return L(a, b, c)
+                            }, u = function(a, b, h, e) {
+                                var k, f;
+                                if ("SHA-224" === c || "SHA-256" === c) k = (b + 65 >>> 9 << 4) + 15, f = 16;
+                                else if ("SHA-384" === c || "SHA-512" === c) k = (b + 129 >>> 10 <<
+                                    5) + 31, f = 32;
+                                else throw Error("Unexpected error in SHA-2 implementation");
+                                for (; a.length <= k;) a.push(0);
+                                a[b >>> 5] |= 128 << 24 - b % 32;
+                                b = b + h;
+                                a[k] = b & 4294967295;
+                                a[k - 1] = b / 4294967296 | 0;
+                                h = a.length;
+                                for (b = 0; b < h; b += f) e = L(a.slice(b, b + f), e, c);
+                                if ("SHA-224" === c) a = [e[0], e[1], e[2], e[3], e[4], e[5], e[6]];
+                                else if ("SHA-256" === c) a = e;
+                                else if ("SHA-384" === c) a = [e[0].a, e[0].b, e[1].a, e[1].b, e[2].a, e[2].b, e[3].a, e[3].b, e[4].a, e[4].b, e[5].a, e[5].b];
+                                else if ("SHA-512" === c) a = [e[0].a, e[0].b, e[1].a, e[1].b, e[2].a, e[2].b, e[3].a, e[3].b, e[4].a,
+                                    e[4].b, e[5].a, e[5].b, e[6].a, e[6].b, e[7].a, e[7].b
+                                ];
+                                else throw Error("Unexpected error in SHA-2 implementation");
+                                return a
+                            }, r = function(a) {
+                                return a.slice()
+                            }, "SHA-224" === c) m = 512, f = 224;
+                        else if ("SHA-256" === c) m = 512, f = 256;
+                    else if ("SHA-384" === c) m = 1024, f = 384;
+                    else if ("SHA-512" === c) m = 1024, f = 512;
+                    else throw Error("Chosen SHA variant is not supported");
+                    else if (0 === c.lastIndexOf("SHA3-", 0) || 0 === c.lastIndexOf("SHAKE", 0)) {
+                        var F = 6;
+                        q = D;
+                        r = function(a) {
+                            var c = [],
+                                e;
+                            for (e = 0; 5 > e; e += 1) c[e] = a[e].slice();
+                            return c
+                        };
+                        x = 1;
+                        if ("SHA3-224" ===
+                            c) m = 1152, f = 224;
+                        else if ("SHA3-256" === c) m = 1088, f = 256;
+                        else if ("SHA3-384" === c) m = 832, f = 384;
+                        else if ("SHA3-512" === c) m = 576, f = 512;
+                        else if ("SHAKE128" === c) m = 1344, f = -1, F = 31, z = !0;
+                        else if ("SHAKE256" === c) m = 1088, f = -1, F = 31, z = !0;
+                        else throw Error("Chosen SHA variant is not supported");
+                        u = function(a, c, e, b, h) {
+                            e = m;
+                            var k = F,
+                                f, g = [],
+                                n = e >>> 5,
+                                l = 0,
+                                d = c >>> 5;
+                            for (f = 0; f < d && c >= e; f += n) b = D(a.slice(f, f + n), b), c -= e;
+                            a = a.slice(f);
+                            for (c %= e; a.length < n;) a.push(0);
+                            f = c >>> 3;
+                            a[f >> 2] ^= k << f % 4 * 8;
+                            a[n - 1] ^= 2147483648;
+                            for (b = D(a, b); 32 * g.length < h;) {
+                                a = b[l %
+                                    5][l / 5 | 0];
+                                g.push(a.b);
+                                if (32 * g.length >= h) break;
+                                g.push(a.a);
+                                l += 1;
+                                0 === 64 * l % e && D(null, b)
+                            }
+                            return g
+                        }
+                    } else throw Error("Chosen SHA variant is not supported");
+                    d = M(a, g, x);
+                    l = A(c);
+                    this.setHMACKey = function(a, b, h) {
+                        var k;
+                        if (!0 === I) throw Error("HMAC key already set");
+                        if (!0 === y) throw Error("Cannot set HMAC key after calling update");
+                        if (!0 === z) throw Error("SHAKE is not supported for HMAC");
+                        g = (h || {}).encoding || "UTF8";
+                        b = M(b, g, x)(a);
+                        a = b.binLen;
+                        b = b.value;
+                        k = m >>> 3;
+                        h = k / 4 - 1;
+                        if (k < a / 8) {
+                            for (b = u(b, a, 0, A(c), f); b.length <= h;) b.push(0);
+                            b[h] &= 4294967040
+                        } else if (k > a / 8) {
+                            for (; b.length <= h;) b.push(0);
+                            b[h] &= 4294967040
+                        }
+                        for (a = 0; a <= h; a += 1) v[a] = b[a] ^ 909522486, w[a] = b[a] ^ 1549556828;
+                        l = q(v, l);
+                        e = m;
+                        I = !0
+                    };
+                    this.update = function(a) {
+                        var c, b, k, f = 0,
+                            g = m >>> 5;
+                        c = d(a, h, n);
+                        a = c.binLen;
+                        b = c.value;
+                        c = a >>> 5;
+                        for (k = 0; k < c; k += g) f + m <= a && (l = q(b.slice(k, k + g), l), f += m);
+                        e += f;
+                        h = b.slice(f >>> 5);
+                        n = a % m;
+                        y = !0
+                    };
+                    this.getHash = function(a, b) {
+                        var k, g, d, m;
+                        if (!0 === I) throw Error("Cannot call getHash after setting HMAC key");
+                        d = N(b);
+                        if (!0 === z) {
+                            if (-1 === d.shakeLen) throw Error("shakeLen must be specified in options");
+                            f = d.shakeLen
+                        }
+                        switch (a) {
+                            case "HEX":
+                                k = function(a) {
+                                    return O(a, f, x, d)
+                                };
+                                break;
+                            case "B64":
+                                k = function(a) {
+                                    return P(a, f, x, d)
+                                };
+                                break;
+                            case "BYTES":
+                                k = function(a) {
+                                    return Q(a, f, x)
+                                };
+                                break;
+                            case "ARRAYBUFFER":
+                                try {
+                                    g = new ArrayBuffer(0)
+                                } catch (p) {
+                                    throw Error("ARRAYBUFFER not supported by this environment");
+                                }
+                                k = function(a) {
+                                    return R(a, f, x)
+                                };
+                                break;
+                            default:
+                                throw Error("format must be HEX, B64, BYTES, or ARRAYBUFFER");
+                        }
+                        m = u(h.slice(), n, e, r(l), f);
+                        for (g = 1; g < t; g += 1) !0 === z && 0 !== f % 32 && (m[m.length - 1] &= 16777215 >>> 24 - f % 32), m = u(m, f,
+                            0, A(c), f);
+                        return k(m)
+                    };
+                    this.getHMAC = function(a, b) {
+                        var k, g, d, p;
+                        if (!1 === I) throw Error("Cannot call getHMAC without first setting HMAC key");
+                        d = N(b);
+                        switch (a) {
+                            case "HEX":
+                                k = function(a) {
+                                    return O(a, f, x, d)
+                                };
+                                break;
+                            case "B64":
+                                k = function(a) {
+                                    return P(a, f, x, d)
+                                };
+                                break;
+                            case "BYTES":
+                                k = function(a) {
+                                    return Q(a, f, x)
+                                };
+                                break;
+                            case "ARRAYBUFFER":
+                                try {
+                                    k = new ArrayBuffer(0)
+                                } catch (v) {
+                                    throw Error("ARRAYBUFFER not supported by this environment");
+                                }
+                                k = function(a) {
+                                    return R(a, f, x)
+                                };
+                                break;
+                            default:
+                                throw Error("outputFormat must be HEX, B64, BYTES, or ARRAYBUFFER");
+                        }
+                        g = u(h.slice(), n, e, r(l), f);
+                        p = q(w, A(c));
+                        p = u(g, f, m, p, f);
+                        return k(p)
+                    }
+                }
+
+                function b(c, a) {
+                    this.a = c;
+                    this.b = a
+                }
+
+                function O(c, a, b, e) {
+                    var h = "";
+                    a /= 8;
+                    var n, g, d;
+                    d = -1 === b ? 3 : 0;
+                    for (n = 0; n < a; n += 1) g = c[n >>> 2] >>> 8 * (d + n % 4 * b), h += "0123456789abcdef".charAt(g >>> 4 & 15) + "0123456789abcdef".charAt(g & 15);
+                    return e.outputUpper ? h.toUpperCase() : h
+                }
+
+                function P(c, a, b, e) {
+                    var h = "",
+                        n = a / 8,
+                        g, d, p, f;
+                    f = -1 === b ? 3 : 0;
+                    for (g = 0; g < n; g += 3)
+                        for (d = g + 1 < n ? c[g + 1 >>> 2] : 0, p = g + 2 < n ? c[g + 2 >>> 2] : 0, p = (c[g >>> 2] >>> 8 * (f + g % 4 * b) & 255) << 16 | (d >>> 8 * (f + (g + 1) % 4 * b) & 255) << 8 | p >>> 8 * (f +
+                                (g + 2) % 4 * b) & 255, d = 0; 4 > d; d += 1) 8 * g + 6 * d <= a ? h += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(p >>> 6 * (3 - d) & 63) : h += e.b64Pad;
+                    return h
+                }
+
+                function Q(c, a, b) {
+                    var e = "";
+                    a /= 8;
+                    var h, d, g;
+                    g = -1 === b ? 3 : 0;
+                    for (h = 0; h < a; h += 1) d = c[h >>> 2] >>> 8 * (g + h % 4 * b) & 255, e += String.fromCharCode(d);
+                    return e
+                }
+
+                function R(c, a, b) {
+                    a /= 8;
+                    var e, h = new ArrayBuffer(a),
+                        d, g;
+                    g = new Uint8Array(h);
+                    d = -1 === b ? 3 : 0;
+                    for (e = 0; e < a; e += 1) g[e] = c[e >>> 2] >>> 8 * (d + e % 4 * b) & 255;
+                    return h
+                }
+
+                function N(c) {
+                    var a = {
+                        outputUpper: !1,
+                        b64Pad: "=",
+                        shakeLen: -1
+                    };
+                    c = c || {};
+                    a.outputUpper = c.outputUpper || !1;
+                    !0 === c.hasOwnProperty("b64Pad") && (a.b64Pad = c.b64Pad);
+                    if (!0 === c.hasOwnProperty("shakeLen")) {
+                        if (0 !== c.shakeLen % 8) throw Error("shakeLen must be a multiple of 8");
+                        a.shakeLen = c.shakeLen
+                    }
+                    if ("boolean" !== typeof a.outputUpper) throw Error("Invalid outputUpper formatting option");
+                    if ("string" !== typeof a.b64Pad) throw Error("Invalid b64Pad formatting option");
+                    return a
+                }
+
+                function M(c, a, b) {
+                    switch (a) {
+                        case "UTF8":
+                        case "UTF16BE":
+                        case "UTF16LE":
+                            break;
+                        default:
+                            throw Error("encoding must be UTF8, UTF16BE, or UTF16LE");
+                    }
+                    switch (c) {
+                        case "HEX":
+                            c = function(a, c, d) {
+                                var g = a.length,
+                                    l, p, f, m, q, u;
+                                if (0 !== g % 2) throw Error("String of HEX type must be in byte increments");
+                                c = c || [0];
+                                d = d || 0;
+                                q = d >>> 3;
+                                u = -1 === b ? 3 : 0;
+                                for (l = 0; l < g; l += 2) {
+                                    p = parseInt(a.substr(l, 2), 16);
+                                    if (isNaN(p)) throw Error("String of HEX type contains invalid characters");
+                                    m = (l >>> 1) + q;
+                                    for (f = m >>> 2; c.length <= f;) c.push(0);
+                                    c[f] |= p << 8 * (u + m % 4 * b)
+                                }
+                                return {
+                                    value: c,
+                                    binLen: 4 * g + d
+                                }
+                            };
+                            break;
+                        case "TEXT":
+                            c = function(c, h, d) {
+                                var g, l, p = 0,
+                                    f, m, q, u, r, t;
+                                h = h || [0];
+                                d = d || 0;
+                                q = d >>> 3;
+                                if ("UTF8" === a)
+                                    for (t = -1 ===
+                                        b ? 3 : 0, f = 0; f < c.length; f += 1)
+                                        for (g = c.charCodeAt(f), l = [], 128 > g ? l.push(g) : 2048 > g ? (l.push(192 | g >>> 6), l.push(128 | g & 63)) : 55296 > g || 57344 <= g ? l.push(224 | g >>> 12, 128 | g >>> 6 & 63, 128 | g & 63) : (f += 1, g = 65536 + ((g & 1023) << 10 | c.charCodeAt(f) & 1023), l.push(240 | g >>> 18, 128 | g >>> 12 & 63, 128 | g >>> 6 & 63, 128 | g & 63)), m = 0; m < l.length; m += 1) {
+                                            r = p + q;
+                                            for (u = r >>> 2; h.length <= u;) h.push(0);
+                                            h[u] |= l[m] << 8 * (t + r % 4 * b);
+                                            p += 1
+                                        } else if ("UTF16BE" === a || "UTF16LE" === a)
+                                            for (t = -1 === b ? 2 : 0, l = "UTF16LE" === a && 1 !== b || "UTF16LE" !== a && 1 === b, f = 0; f < c.length; f += 1) {
+                                                g = c.charCodeAt(f);
+                                                !0 === l && (m = g & 255, g = m << 8 | g >>> 8);
+                                                r = p + q;
+                                                for (u = r >>> 2; h.length <= u;) h.push(0);
+                                                h[u] |= g << 8 * (t + r % 4 * b);
+                                                p += 2
+                                            }
+                                        return {
+                                            value: h,
+                                            binLen: 8 * p + d
+                                        }
+                            };
+                            break;
+                        case "B64":
+                            c = function(a, c, d) {
+                                var g = 0,
+                                    l, p, f, m, q, u, r, t;
+                                if (-1 === a.search(/^[a-zA-Z0-9=+\/]+$/)) throw Error("Invalid character in base-64 string");
+                                p = a.indexOf("=");
+                                a = a.replace(/\=/g, "");
+                                if (-1 !== p && p < a.length) throw Error("Invalid '=' found in base-64 string");
+                                c = c || [0];
+                                d = d || 0;
+                                u = d >>> 3;
+                                t = -1 === b ? 3 : 0;
+                                for (p = 0; p < a.length; p += 4) {
+                                    q = a.substr(p, 4);
+                                    for (f = m = 0; f < q.length; f += 1) l = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".indexOf(q[f]),
+                                        m |= l << 18 - 6 * f;
+                                    for (f = 0; f < q.length - 1; f += 1) {
+                                        r = g + u;
+                                        for (l = r >>> 2; c.length <= l;) c.push(0);
+                                        c[l] |= (m >>> 16 - 8 * f & 255) << 8 * (t + r % 4 * b);
+                                        g += 1
+                                    }
+                                }
+                                return {
+                                    value: c,
+                                    binLen: 8 * g + d
+                                }
+                            };
+                            break;
+                        case "BYTES":
+                            c = function(a, c, d) {
+                                var g, l, p, f, m, q;
+                                c = c || [0];
+                                d = d || 0;
+                                p = d >>> 3;
+                                q = -1 === b ? 3 : 0;
+                                for (l = 0; l < a.length; l += 1) g = a.charCodeAt(l), m = l + p, f = m >>> 2, c.length <= f && c.push(0), c[f] |= g << 8 * (q + m % 4 * b);
+                                return {
+                                    value: c,
+                                    binLen: 8 * a.length + d
+                                }
+                            };
+                            break;
+                        case "ARRAYBUFFER":
+                            try {
+                                c = new ArrayBuffer(0)
+                            } catch (e) {
+                                throw Error("ARRAYBUFFER not supported by this environment");
+                            }
+                            c =
+                                function(a, c, d) {
+                                    var g, l, p, f, m, q;
+                                    c = c || [0];
+                                    d = d || 0;
+                                    l = d >>> 3;
+                                    m = -1 === b ? 3 : 0;
+                                    q = new Uint8Array(a);
+                                    for (g = 0; g < a.byteLength; g += 1) f = g + l, p = f >>> 2, c.length <= p && c.push(0), c[p] |= q[g] << 8 * (m + f % 4 * b);
+                                    return {
+                                        value: c,
+                                        binLen: 8 * a.byteLength + d
+                                    }
+                                };
+                            break;
+                        default:
+                            throw Error("format must be HEX, TEXT, B64, BYTES, or ARRAYBUFFER");
+                    }
+                    return c
+                }
+
+                function y(c, a) {
+                    return c << a | c >>> 32 - a
+                }
+
+                function S(c, a) {
+                    return 32 < a ? (a -= 32, new b(c.b << a | c.a >>> 32 - a, c.a << a | c.b >>> 32 - a)) : 0 !== a ? new b(c.a << a | c.b >>> 32 - a, c.b << a | c.a >>> 32 - a) : c
+                }
+
+                function w(c, a) {
+                    return c >>>
+                        a | c << 32 - a
+                }
+
+                function t(c, a) {
+                    var k = null,
+                        k = new b(c.a, c.b);
+                    return k = 32 >= a ? new b(k.a >>> a | k.b << 32 - a & 4294967295, k.b >>> a | k.a << 32 - a & 4294967295) : new b(k.b >>> a - 32 | k.a << 64 - a & 4294967295, k.a >>> a - 32 | k.b << 64 - a & 4294967295)
+                }
+
+                function T(c, a) {
+                    var k = null;
+                    return k = 32 >= a ? new b(c.a >>> a, c.b >>> a | c.a << 32 - a & 4294967295) : new b(0, c.a >>> a - 32)
+                }
+
+                function aa(c, a, b) {
+                    return c & a ^ ~c & b
+                }
+
+                function ba(c, a, k) {
+                    return new b(c.a & a.a ^ ~c.a & k.a, c.b & a.b ^ ~c.b & k.b)
+                }
+
+                function U(c, a, b) {
+                    return c & a ^ c & b ^ a & b
+                }
+
+                function ca(c, a, k) {
+                    return new b(c.a & a.a ^ c.a & k.a ^ a.a &
+                        k.a, c.b & a.b ^ c.b & k.b ^ a.b & k.b)
+                }
+
+                function da(c) {
+                    return w(c, 2) ^ w(c, 13) ^ w(c, 22)
+                }
+
+                function ea(c) {
+                    var a = t(c, 28),
+                        k = t(c, 34);
+                    c = t(c, 39);
+                    return new b(a.a ^ k.a ^ c.a, a.b ^ k.b ^ c.b)
+                }
+
+                function fa(c) {
+                    return w(c, 6) ^ w(c, 11) ^ w(c, 25)
+                }
+
+                function ga(c) {
+                    var a = t(c, 14),
+                        k = t(c, 18);
+                    c = t(c, 41);
+                    return new b(a.a ^ k.a ^ c.a, a.b ^ k.b ^ c.b)
+                }
+
+                function ha(c) {
+                    return w(c, 7) ^ w(c, 18) ^ c >>> 3
+                }
+
+                function ia(c) {
+                    var a = t(c, 1),
+                        k = t(c, 8);
+                    c = T(c, 7);
+                    return new b(a.a ^ k.a ^ c.a, a.b ^ k.b ^ c.b)
+                }
+
+                function ja(c) {
+                    return w(c, 17) ^ w(c, 19) ^ c >>> 10
+                }
+
+                function ka(c) {
+                    var a = t(c, 19),
+                        k = t(c, 61);
+                    c = T(c, 6);
+                    return new b(a.a ^ k.a ^ c.a, a.b ^ k.b ^ c.b)
+                }
+
+                function G(c, a) {
+                    var b = (c & 65535) + (a & 65535);
+                    return ((c >>> 16) + (a >>> 16) + (b >>> 16) & 65535) << 16 | b & 65535
+                }
+
+                function la(c, a, b, e) {
+                    var h = (c & 65535) + (a & 65535) + (b & 65535) + (e & 65535);
+                    return ((c >>> 16) + (a >>> 16) + (b >>> 16) + (e >>> 16) + (h >>> 16) & 65535) << 16 | h & 65535
+                }
+
+                function H(c, a, b, e, h) {
+                    var d = (c & 65535) + (a & 65535) + (b & 65535) + (e & 65535) + (h & 65535);
+                    return ((c >>> 16) + (a >>> 16) + (b >>> 16) + (e >>> 16) + (h >>> 16) + (d >>> 16) & 65535) << 16 | d & 65535
+                }
+
+                function ma(c, a) {
+                    var d, e, h;
+                    d = (c.b & 65535) + (a.b & 65535);
+                    e = (c.b >>> 16) +
+                        (a.b >>> 16) + (d >>> 16);
+                    h = (e & 65535) << 16 | d & 65535;
+                    d = (c.a & 65535) + (a.a & 65535) + (e >>> 16);
+                    e = (c.a >>> 16) + (a.a >>> 16) + (d >>> 16);
+                    return new b((e & 65535) << 16 | d & 65535, h)
+                }
+
+                function na(c, a, d, e) {
+                    var h, n, g;
+                    h = (c.b & 65535) + (a.b & 65535) + (d.b & 65535) + (e.b & 65535);
+                    n = (c.b >>> 16) + (a.b >>> 16) + (d.b >>> 16) + (e.b >>> 16) + (h >>> 16);
+                    g = (n & 65535) << 16 | h & 65535;
+                    h = (c.a & 65535) + (a.a & 65535) + (d.a & 65535) + (e.a & 65535) + (n >>> 16);
+                    n = (c.a >>> 16) + (a.a >>> 16) + (d.a >>> 16) + (e.a >>> 16) + (h >>> 16);
+                    return new b((n & 65535) << 16 | h & 65535, g)
+                }
+
+                function oa(c, a, d, e, h) {
+                    var n, g, l;
+                    n = (c.b &
+                        65535) + (a.b & 65535) + (d.b & 65535) + (e.b & 65535) + (h.b & 65535);
+                    g = (c.b >>> 16) + (a.b >>> 16) + (d.b >>> 16) + (e.b >>> 16) + (h.b >>> 16) + (n >>> 16);
+                    l = (g & 65535) << 16 | n & 65535;
+                    n = (c.a & 65535) + (a.a & 65535) + (d.a & 65535) + (e.a & 65535) + (h.a & 65535) + (g >>> 16);
+                    g = (c.a >>> 16) + (a.a >>> 16) + (d.a >>> 16) + (e.a >>> 16) + (h.a >>> 16) + (n >>> 16);
+                    return new b((g & 65535) << 16 | n & 65535, l)
+                }
+
+                function B(c, a) {
+                    return new b(c.a ^ a.a, c.b ^ a.b)
+                }
+
+                function A(c) {
+                    var a = [],
+                        d;
+                    if ("SHA-1" === c) a = [1732584193, 4023233417, 2562383102, 271733878, 3285377520];
+                    else if (0 === c.lastIndexOf("SHA-", 0)) switch (a = [3238371032, 914150663, 812702999, 4144912697, 4290775857, 1750603025, 1694076839, 3204075428], d = [1779033703, 3144134277, 1013904242, 2773480762, 1359893119, 2600822924, 528734635, 1541459225], c) {
+                            case "SHA-224":
+                                break;
+                            case "SHA-256":
+                                a = d;
+                                break;
+                            case "SHA-384":
+                                a = [new b(3418070365, a[0]), new b(1654270250, a[1]), new b(2438529370, a[2]), new b(355462360, a[3]), new b(1731405415, a[4]), new b(41048885895, a[5]), new b(3675008525, a[6]), new b(1203062813, a[7])];
+                                break;
+                            case "SHA-512":
+                                a = [new b(d[0], 4089235720), new b(d[1], 2227873595),
+                                    new b(d[2], 4271175723), new b(d[3], 1595750129), new b(d[4], 2917565137), new b(d[5], 725511199), new b(d[6], 4215389547), new b(d[7], 327033209)
+                                ];
+                                break;
+                            default:
+                                throw Error("Unknown SHA variant");
+                        } else if (0 === c.lastIndexOf("SHA3-", 0) || 0 === c.lastIndexOf("SHAKE", 0))
+                            for (c = 0; 5 > c; c += 1) a[c] = [new b(0, 0), new b(0, 0), new b(0, 0), new b(0, 0), new b(0, 0)];
+                        else throw Error("No SHA variants supported");
+                    return a
+                }
+
+                function K(c, a) {
+                    var b = [],
+                        e, d, n, g, l, p, f;
+                    e = a[0];
+                    d = a[1];
+                    n = a[2];
+                    g = a[3];
+                    l = a[4];
+                    for (f = 0; 80 > f; f += 1) b[f] = 16 > f ? c[f] : y(b[f -
+                        3] ^ b[f - 8] ^ b[f - 14] ^ b[f - 16], 1), p = 20 > f ? H(y(e, 5), d & n ^ ~d & g, l, 1518500249, b[f]) : 40 > f ? H(y(e, 5), d ^ n ^ g, l, 1859775393, b[f]) : 60 > f ? H(y(e, 5), U(d, n, g), l, 2400959708, b[f]) : H(y(e, 5), d ^ n ^ g, l, 3395469782, b[f]), l = g, g = n, n = y(d, 30), d = e, e = p;
+                    a[0] = G(e, a[0]);
+                    a[1] = G(d, a[1]);
+                    a[2] = G(n, a[2]);
+                    a[3] = G(g, a[3]);
+                    a[4] = G(l, a[4]);
+                    return a
+                }
+
+                function Z(c, a, b, e) {
+                    var d;
+                    for (d = (a + 65 >>> 9 << 4) + 15; c.length <= d;) c.push(0);
+                    c[a >>> 5] |= 128 << 24 - a % 32;
+                    a += b;
+                    c[d] = a & 4294967295;
+                    c[d - 1] = a / 4294967296 | 0;
+                    a = c.length;
+                    for (d = 0; d < a; d += 16) e = K(c.slice(d, d + 16), e);
+                    return e
+                }
+
+                function L(c,
+                    a, k) {
+                    var e, h, n, g, l, p, f, m, q, u, r, t, v, w, y, A, z, x, F, B, C, D, E = [],
+                        J;
+                    if ("SHA-224" === k || "SHA-256" === k) u = 64, t = 1, D = Number, v = G, w = la, y = H, A = ha, z = ja, x = da, F = fa, C = U, B = aa, J = d;
+                    else if ("SHA-384" === k || "SHA-512" === k) u = 80, t = 2, D = b, v = ma, w = na, y = oa, A = ia, z = ka, x = ea, F = ga, C = ca, B = ba, J = V;
+                    else throw Error("Unexpected error in SHA-2 implementation");
+                    k = a[0];
+                    e = a[1];
+                    h = a[2];
+                    n = a[3];
+                    g = a[4];
+                    l = a[5];
+                    p = a[6];
+                    f = a[7];
+                    for (r = 0; r < u; r += 1) 16 > r ? (q = r * t, m = c.length <= q ? 0 : c[q], q = c.length <= q + 1 ? 0 : c[q + 1], E[r] = new D(m, q)) : E[r] = w(z(E[r - 2]), E[r - 7], A(E[r - 15]), E[r -
+                        16]), m = y(f, F(g), B(g, l, p), J[r], E[r]), q = v(x(k), C(k, e, h)), f = p, p = l, l = g, g = v(n, m), n = h, h = e, e = k, k = v(m, q);
+                    a[0] = v(k, a[0]);
+                    a[1] = v(e, a[1]);
+                    a[2] = v(h, a[2]);
+                    a[3] = v(n, a[3]);
+                    a[4] = v(g, a[4]);
+                    a[5] = v(l, a[5]);
+                    a[6] = v(p, a[6]);
+                    a[7] = v(f, a[7]);
+                    return a
+                }
+
+                function D(c, a) {
+                    var d, e, h, n, g = [],
+                        l = [];
+                    if (null !== c)
+                        for (e = 0; e < c.length; e += 2) a[(e >>> 1) % 5][(e >>> 1) / 5 | 0] = B(a[(e >>> 1) % 5][(e >>> 1) / 5 | 0], new b(c[e + 1], c[e]));
+                    for (d = 0; 24 > d; d += 1) {
+                        n = A("SHA3-");
+                        for (e = 0; 5 > e; e += 1) {
+                            h = a[e][0];
+                            var p = a[e][1],
+                                f = a[e][2],
+                                m = a[e][3],
+                                q = a[e][4];
+                            g[e] = new b(h.a ^ p.a ^ f.a ^
+                                m.a ^ q.a, h.b ^ p.b ^ f.b ^ m.b ^ q.b)
+                        }
+                        for (e = 0; 5 > e; e += 1) l[e] = B(g[(e + 4) % 5], S(g[(e + 1) % 5], 1));
+                        for (e = 0; 5 > e; e += 1)
+                            for (h = 0; 5 > h; h += 1) a[e][h] = B(a[e][h], l[e]);
+                        for (e = 0; 5 > e; e += 1)
+                            for (h = 0; 5 > h; h += 1) n[h][(2 * e + 3 * h) % 5] = S(a[e][h], W[e][h]);
+                        for (e = 0; 5 > e; e += 1)
+                            for (h = 0; 5 > h; h += 1) a[e][h] = B(n[e][h], new b(~n[(e + 1) % 5][h].a & n[(e + 2) % 5][h].a, ~n[(e + 1) % 5][h].b & n[(e + 2) % 5][h].b));
+                        a[0][0] = B(a[0][0], X[d])
+                    }
+                    return a
+                }
+                var d, V, W, X;
+                d = [1116352408, 1899447441, 3049323471, 3921009573, 961987163, 1508970993, 2453635748, 2870763221, 3624381080, 310598401, 607225278,
+                    1426881987, 1925078388, 2162078206, 2614888103, 3248222580, 3835390401, 4022224774, 264347078, 604807628, 770255983, 1249150122, 1555081692, 1996064986, 2554220882, 2821834349, 2952996808, 3210313671, 3336571891, 3584528711, 113926993, 338241895, 666307205, 773529912, 1294757372, 1396182291, 1695183700, 1986661051, 2177026350, 2456956037, 2730485921, 2820302411, 3259730800, 3345764771, 3516065817, 3600352804, 4094571909, 275423344, 430227734, 506948616, 659060556, 883997877, 958139571, 1322822218, 1537002063, 1747873779, 1955562222, 2024104815,
+                    2227730452, 2361852424, 2428436474, 2756734187, 3204031479, 3329325298
+                ];
+                V = [new b(d[0], 3609767458), new b(d[1], 602891725), new b(d[2], 3964484399), new b(d[3], 2173295548), new b(d[4], 4081628472), new b(d[5], 3053834265), new b(d[6], 2937671579), new b(d[7], 3664609560), new b(d[8], 2734883394), new b(d[9], 1164996542), new b(d[10], 1323610764), new b(d[11], 3590304994), new b(d[12], 4068182383), new b(d[13], 991336113), new b(d[14], 633803317), new b(d[15], 3479774868), new b(d[16], 2666613458), new b(d[17], 944711139), new b(d[18], 2341262773),
+                    new b(d[19], 2007800933), new b(d[20], 1495990901), new b(d[21], 1856431235), new b(d[22], 3175218132), new b(d[23], 2198950837), new b(d[24], 3999719339), new b(d[25], 766784016), new b(d[26], 2566594879), new b(d[27], 3203337956), new b(d[28], 1034457026), new b(d[29], 2466948901), new b(d[30], 3758326383), new b(d[31], 168717936), new b(d[32], 1188179964), new b(d[33], 1546045734), new b(d[34], 1522805485), new b(d[35], 2643833823), new b(d[36], 2343527390), new b(d[37], 1014477480), new b(d[38], 1206759142), new b(d[39], 344077627),
+                    new b(d[40], 1290863460), new b(d[41], 3158454273), new b(d[42], 3505952657), new b(d[43], 106217008), new b(d[44], 3606008344), new b(d[45], 1432725776), new b(d[46], 1467031594), new b(d[47], 851169720), new b(d[48], 3100823752), new b(d[49], 1363258195), new b(d[50], 3750685593), new b(d[51], 3785050280), new b(d[52], 3318307427), new b(d[53], 3812723403), new b(d[54], 2003034995), new b(d[55], 3602036899), new b(d[56], 1575990012), new b(d[57], 1125592928), new b(d[58], 2716904306), new b(d[59], 442776044), new b(d[60], 593698344), new b(d[61],
+                        3733110249), new b(d[62], 2999351573), new b(d[63], 3815920427), new b(3391569614, 3928383900), new b(3515267271, 566280711), new b(3940187606, 3454069534), new b(4118630271, 4000239992), new b(116418474, 1914138554), new b(174292421, 2731055270), new b(289380356, 3203993006), new b(460393269, 320620315), new b(685471733, 587496836), new b(852142971, 1086792851), new b(1017036298, 365543100), new b(1126000580, 2618297676), new b(1288033470, 3409855158), new b(1501505948, 4234509866), new b(1607167915, 987167468), new b(1816402316,
+                        1246189591)
+                ];
+                X = [new b(0, 1), new b(0, 32898), new b(2147483648, 32906), new b(2147483648, 2147516416), new b(0, 32907), new b(0, 2147483649), new b(2147483648, 2147516545), new b(2147483648, 32777), new b(0, 138), new b(0, 136), new b(0, 2147516425), new b(0, 2147483658), new b(0, 2147516555), new b(2147483648, 139), new b(2147483648, 32905), new b(2147483648, 32771), new b(2147483648, 32770), new b(2147483648, 128), new b(0, 32778), new b(2147483648, 2147483658), new b(2147483648, 2147516545), new b(2147483648, 32896), new b(0, 2147483649),
+                    new b(2147483648, 2147516424)
+                ];
+                W = [
+                    [0, 36, 3, 41, 18],
+                    [1, 44, 10, 45, 2],
+                    [62, 6, 43, 15, 61],
+                    [28, 55, 25, 21, 56],
+                    [27, 20, 39, 8, 14]
+                ];
+                "function" === typeof define && define.amd ? define(function() {
+                    return C
+                }) : "undefined" !== typeof exports ? ("undefined" !== typeof module && module.exports && (module.exports = C), exports = C) : Y.jsSHA = C
+            })(this);
+        </script>
+        <script>
+            //hash
+            var hshInp = document.getElementById('hshInpText');
+            var hshInpType = document.getElementById('hshInpType');
+            var hashVariant = document.getElementById('hashVariant');
+            var hashRounds = document.getElementById('hashRounds');
+            var hshOutType = document.getElementById('hshOutType');
+            var hshOut = document.getElementById('hshOutText');
+
+            //HMAC
+            var hmacText = document.getElementById('hmacInputText');
+            var hmacTextType = document.getElementById('hmacTextType');
+            var hmacKeyInput = document.getElementById('hmacInputKey');
+            var hmacKeyInputType = document.getElementById('hmacKeyType');
+            var hmacVariant = document.getElementById('hmacVariant');
+            var hmacOutputType = document.getElementById('hmacOutputType');
+            var hmacOutput = document.getElementById('hmacOutputText');
+
+            function calcHash() {
+                try {
+                    var hashObj = new jsSHA(
+                        hashVariant.options[hashVariant.selectedIndex].value,
+                        hshInpType.options[hshInpType.selectedIndex].value, {
+                            numRounds: parseInt(hashRounds.value, 10)
+                        }
+                    );
+                    hashObj.update(hshInp.value);
+                    hshOut.value = hashObj.getHash(hshOutType.options[hshOutType.selectedIndex].value);
+                } catch (e) {
+                    hshOut.value = e.message
+                }
+            }
+
+            function calcHMAC() {
+                try {
+                    var hmacObj = new jsSHA(
+                        hmacVariant.options[hmacVariant.selectedIndex].value,
+                        hmacTextType.options[hmacTextType.selectedIndex].value
+                    );
+                    hmacObj.setHMACKey(
+                        hmacKeyInput.value,
+                        hmacKeyInputType.options[hmacKeyInputType.selectedIndex].value
+                    );
+                    hmacObj.update(hmacText.value);
+
+                    hmacOutput.value = hmacObj.getHMAC(hmacOutputType.options[hmacOutputType.selectedIndex].value);
+                } catch (e) {
+                    hmacOutput.value = e.message
+                }
+            }
+
+            window.setTimeout(() => {
+                if (typeof clickSelCnt == 'function') clickSelCnt('pre.code')
+            }, 4000);
+        </script>
+        <div id="link_pn">&lt;&lt;-<a href="javascript/properties-methods-window" title="Properties and Methods of the window object">Properties and Methods of  ..</a></div>
+    </div>
+    <nav id='menu_side'>
+        <ul>
+            <li class="menu2"><a href="javascript" title="JavaScript" data-idp="5">JavaScript</a></li>
+            <li class="menu2"><a href="vuejs" title="Learning Vue.js" data-idp="1439">Learning Vue.js</a></li>
+            <li class="menu2"><a href="nodejs" title="Node.js" data-idp="1308">Node.js</a></li>
+            <li class="menu2"><a href="javascript/tutorials_t" title="Tutorials" data-idp="21">Tutorials</a></li>
+            <li class="menu2"><a href="javascript/javascript-scripts_s2" title="JavaScript Scripts" data-idp="24">JavaScript Scripts</a></li>
+            <li class="menu2"><a href="jquery/jquery-course" title="jQuery Course" data-idp="20">jQuery Course</a></li>
+            <li class="menu2"><a href="jquery/jquery-plugins_jp" title="jQuery Plugins" data-idp="25">jQuery Plugins</a></li>
+            <li class="menu2"><a class="this_pg" href="javascript/code-snippets_cs" title="JavaScript Code Snippets" data-idp="22">JavaScript Code Snippets</a></li>
+        </ul>
+        <nav class="subm"> <a href="javascript/properties-methods-window" title="Properties and Methods of the window object">Properties and Methods of the window object</a><a href="javascript/events-js" title="List with JavaScript events">List with JavaScript events</a><a href="javascript/properties-methods-form-elements" title="Properties and Methods of the Form elements">Properties and Methods of the Form elements</a><a href="javascript/properties-methods-html-elements" title="Properties and Methods of the HTML elements in JavaScript">Properties and Methods of the HTML elements in JavaScript</a><a href="javascript/properties-methods-document" title="Properties and Methods of the document object">Properties and Methods of the document object</a><a href="javascript/methods-date-object" title="Methods of the Date object">Methods of the Date object</a><a href="javascript/methods-array-object-js" title="Methods of the Array object in JS">Methods of the Array object in JS</a><a href="javascript/methods-string-object-js" title="Methods of the String object in JS">Methods of the String object in JS</a><a href="javascript/show-message-javascript-disabled-adblock" title="Show a message if JavaScript disabled or Ad-Blocker">Show a message if JavaScript disabled or Ad-Blocker</a><a href="javascript/generate-random-numbers" title="Generate random numbers in JavaScript">Generate random numbers in JavaScript</a><a href="javascript/moving-html-element-random-direction" title="Moving html element to a random direction">Moving html element to a random direction</a><a href="javascript/position-size-div-page" title="Get position and size of Div in page">Get position and size of Div in page</a><a href="javascript/google-map-image-geolocation" title="Show Google Map image with Geolocation JavaScript object">Show Google Map image with Geolocation JavaScript object</a><a href="javascript/duration-audio-video-file-before-upload_cs" title="Get Duration of Audio /Video file before Upload">Get Duration of Audio /Video file before Upload</a><a href="javascript/refresh-page-window-width-changes-size_cs" title="Refresh page if window width changes from a device size to other">Refresh page if window width changes from a device size to other</a><a href="javascript/shuffle-randomize-array_cs" title="Shuffle / Randomize Array in JavaScript">Shuffle / Randomize Array in JavaScript</a><a href="javascript/zodiac-signs_cs" title="Zodiac Signs JavaScript code">Zodiac Signs JavaScript code</a><a href="javascript/strip_tags-stripslashes-javascript_cs" title="JavaScript strip_tags and stripslashes">JavaScript strip_tags and stripslashes</a><a href="javascript/array_map-array_search-javascript_cs" title="array_map and array_search in JavaScript">array_map and array_search in JavaScript</a><a href="javascript/javascript-php-functions-test-data-type_cs" title="JavaScript PHP is_ functions to test data type">JavaScript PHP is_ functions to test data type</a><a href="javascript/trim-rtrim-ltrim-javascript_cs" title="JavaScript trim, rtrim and ltrim">JavaScript trim, rtrim and ltrim</a><a href="javascript/difference-between-two-dates-time_cs" title="Difference between two Dates - Time and Date">Difference between two Dates - Time and Date</a><a href="javascript/get-lower-higher-closest-number_cs" title="Get Lower, Higher and Closest Number in JavaScript">Get Lower, Higher and Closest Number in JavaScript</a><a href="javascript/get-value-selected-checkboxes_cs" title="Get the value of the selected /checked checkboxes in a form">Get the value of the selected /checked checkboxes in a form</a><a href="javascript/replace-javascript-variable-name-from-string-with-value_cs" title="Replace JavaScript variable name from string with its value">Replace JavaScript variable name from string with its value</a><a href="javascript/delete-add-css-class_cs" title="Delete and Add CSS class">Delete and Add CSS class</a><a href="javascript/split-alphanumeric-string-into-array_cs" title="Split an alphanumeric string into Array in JavaScript">Split an alphanumeric string into Array in JavaScript</a><a href="javascript/base64-encode-decode_cs" title="JavaScript base64 encode decode">JavaScript base64 encode decode</a><a href="javascript/md5-hash-string_cs" title="MD5 hash string in JavaScript">MD5 hash string in JavaScript</a><a href="javascript/sha1-encrypt-data_cs" title="SHA1 Encrypt data in JavaScript">SHA1 Encrypt data in JavaScript</a><a href="javascript/sha256-encrypt-hash_cs" title="SHA256 Encrypt hash in JavaScript">SHA256 Encrypt hash in JavaScript</a><a href="javascript/sha512-encrypt-hash_cs" title="SHA512 Encrypt hash in JavaScript">SHA512 Encrypt hash in JavaScript</a><a href="javascript/get-data-url-address-javascript_cs" title="Get search data from URL address in JavaScript">Get search data from URL address in JavaScript</a><a href="javascript/url-data-domain-name-path-file-search-hash_cs" title="Get Domain Name and other Data from URL">Get Domain Name and other Data from URL</a><a href="javascript/disable-button-enable-after-specified-time_cs" title="Disable button and Enable it after specified time">Disable button and Enable it after specified time</a><a href="javascript/highlight-images-click_cs" title="Highlight Images on click">Highlight Images on click</a><a href="javascript/recursive-function-create-multi-level-menu-javascript_cs" title="Recursive function to create Multi-Level Menu in JavaScript">Recursive function to create Multi-Level Menu in JavaScript</a><a href="javascript/show-hide-html_cs" title="Show and Hide HTML elements">Show and Hide HTML elements</a><a href="javascript/select-content-div-html-element_cs" title="Select the Content of HTML Element">Select the Content of HTML Element</a><a href="javascript/convert-bbcode-html-javascript_cs" title="Convert BBCode to HTML and HTML to BBCode with JavaScript">Convert BBCode to HTML and HTML to BBCode with JavaScript</a><a href="javascript/add-tag-selected-text-textarea_cs" title="Add Tag to Selected Text in textarea with JavaScript">Add Tag to Selected Text in textarea with JavaScript</a><a href="javascript/detect-scrollbar-reaches-bottom-page_cs" title="Detect when ScrollBar reaches the bottom of the page">Detect when ScrollBar reaches the bottom of the page</a><a href="javascript/get-page-window-height-width_cs" title="Get the Height and Width of web Page and browser Window">Get the Height and Width of web Page and browser Window</a><a href="javascript/clear-canvas-context_cs" title="Clear Canvas Context">Clear Canvas Context</a><a href="javascript/add-text-canvas-from-input-field-typed_cs" title="Add Text in Canvas from Input text field, as it is Typed">Add Text in Canvas from Input text field, as it is Typed</a><a href="javascript/keep-first-img-tags-remove-all-the-others_cs" title="Keep the first Nr IMG tags, Remove all the others">Keep the first Nr IMG tags, Remove all the others</a><a href="javascript/delete-multiple-consecutive-characters-split-long-words_cs" title="Delete multiple consecutive characters and Split long words in JavaScript">Delete multiple consecutive characters and Split long words in JavaScript</a><a href="javascript/jquery-drag-drop-rows-between-two-similar-tables_cs" title="jQuery Drag and Drop Rows between two similar Tables">jQuery Drag and Drop Rows between two similar Tables</a><a href="javascript/creating-tabs-effect_cs" title="Creating Tabs Effect with JavaScript">Creating Tabs Effect with JavaScript</a></nav><ins class="adsbygoogle g_160_600" data-ad-client="ca-pub-9841755376220312" data-ad-slot="4504309317"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </nav>
+    <div id="dtest_c" class="dtest">
+        <h4>Daily Test with Code Example</h4>
+        <h5 data-tab_id="dlt_html">HTML</h5>
+        <h5 data-tab_id="dlt_css">CSS</h5>
+        <h5 class="tab_clk" data-tab_id="dlt_javascript">JavaScript</h5>
+        <h5 data-tab_id="dlt_php-mysql">PHP-MySQL</h5>
+        <div id="dlt_html" class="tb_elms">
+            <div class="test_ask">Click on the tag that creates an ordered list</div><span> &lt;ul&gt;</span><span> &lt;tr&gt;</span><span class="dltrc"> &lt;ol&gt;</span><pre>&lt;ol&gt;
+  &lt;li&gt;List-1&lt;/li&gt;
+  &lt;li&gt;List-2&lt;/li&gt;
+&lt;/ol&gt;</pre></div>
+        <div id="dlt_css" class="tb_elms">
+            <div class="test_ask">Which selector represents the ID of an element in CSS</div><span> .name</span><span class="dltrc"> #name</span><span> name</span><pre>#id {
+  color: #0110fb;
+}</pre></div>
+        <div id="dlt_javascript" class="tb_elms tab_vi">
+            <div class="test_ask">What statement creates an object in JavaScript?</div><span class="dltrc"> {}</span><span> []</span><span> new Date()</span><pre>var obj = {"site": "CoursesWeb.net", "pr": 5};
+alert(obj.site);</pre></div>
+        <div id="dlt_php-mysql" class="tb_elms">
+            <div class="test_ask">Indicate the instruction used to evaluate if a condiition is True or False</div><span> else</span><span class="dltrc"> if()</span><span> switch()</span><pre>$var = 8;
+if($var == 8) echo $var;</pre></div>
+    </div>
+    <script>
+        tab_hideshow.push(["dlt_javascript", "#dtest_c h5"]);
+    </script>
+
+    <div id='share_like'><strong id='sl_fav'>jsSHA - SHA Hashes and HMAC in JavaScript</strong></div>
+    <div id="siteacc">
+        <div id="pgalast">
+            <h4>Last accessed pages</h4>
+            <ol>
+                <li><span class="islnk" title="/javascript/sha1-encrypt-data_cs">SHA1 Encrypt data in JavaScript</span> <sup>(13935)</sup></li>
+                <li><span class="islnk" title="/php-mysql/pdo-prepare-execute">PHP PDO - prepare and execute</span> <sup>(7283)</sup></li>
+                <li><span class="islnk" title="/php-mysql/pdo-exec-insert-update-delete">PHP PDO - exec (INSERT, UPDATE, DELETE) MySQL</span> <sup>(46761)</sup></li>
+                <li><span class="islnk" title="/nodejs/select-mysql-output-html-table">Select in MySQL, Output results in HTML Table</span> <sup>(9847)</sup></li>
+                <li><span class="islnk" title="/javascript/add-delete-rows-table-javascript">Add /Delete rows in HTML table with JavaScript</span> <sup>(894)</sup></li>
+            </ol>
+        </div>
+        <div id="pgatop">
+            <h4>Popular pages this month</h4>
+            <ol>
+                <li><span class="islnk" title="/contact">Contact page - CoursesWeb</span> <sup>(5)</sup></li>
+                <li><span class="islnk" title="/css/making-div-contents-scroll-horizontally_cs">Making DIV Contents Scroll Horizontally, with multiple Div`s inside</span> <sup>(5)</sup></li>
+                <li><span class="islnk" title="/css/tabs-effect-css_cs">Tabs effect with CSS</span> <sup>(5)</sup></li>
+                <li><span class="islnk" title="/php-mysql/getelementbyid-getelementsbytagname">PHP getElementById and getElementsByTagName</span> <sup>(4)</sup></li>
+                <li><span class="islnk" title="/javascript/sha1-encrypt-data_cs">SHA1 Encrypt data in JavaScript</span> <sup>(2)</sup></li>
+            </ol>
+        </div>
+    </div>
+    <div id="adv2_footer">
+        <script src="//bdv.bidvertiser.com/BidVertiser.dbm?pid=312942&amp;bid=1087436" async></script>
+    </div>
+    <div id="the_chat">
+        <div id="get_chat"><img src="addons/chat/chatex/chat.png" width="32" height="105" alt="Chat" /></div>
+        <div id="over_msg">Chat or leave a message for the other users</div>
+        <div id="top_chat"><img src="addons/chat/chatex/full_screen.png" width="24" height="20" alt="Full screen" id="cht_fullscr" /><img src="addons/chat/chatex/inchide.png" width="32" height="20" alt="Inchide" id="stop_chat" /></div>
+        <div id="show_chat"></div>
+    </div>
+    <script src="addons/chat/chat.js"></script>
+    <footer id='footer'>
+        <nav id='menu_footer'><a href="" title="Home">Home</a> <a href="html" title="HTML">HTML</a> <a href="css" title="CSS">CSS</a> <a href="php-mysql" title="PHP-MySQL">PHP-MySQL</a> <a href="javascript" title="JavaScript">JavaScript</a> <a href="ajax" title="Ajax">Ajax</a> <a href="vuejs" title="Learning Vue.js">Learning Vue.js</a> <a href="flash" title="Flash-AS3">Flash-AS3</a> <a href="nodejs" title="Node.js">Node.js</a> <a href="laravel" title="Laravel Tutorials">Laravel Tutorials</a> <a href="blog" title="Blog">Blog</a> <a href="contact" title="Contact">Contact</a> </nav>
+        <em id='mp' class='notify_js'>- WebMaster, WebDesigner : MarPlo -</em>
+    </footer>
+    <script>
+        var notify_js = document.querySelector('#mp.notify_js');
+        notify_js.removeAttribute('class');
+
+        //add .notify_adblock class if adblock
+        var test_adb = document.createElement('div');
+        test_adb.innerHTML = ' &nbsp; ';
+        test_adb.className = 'adsbox';
+        document.body.appendChild(test_adb);
+        window.setTimeout(function() {
+            document.getElementById('menu_top').insertAdjacentHTML('beforeend', '<a href="//gamv.eu/" title="Games - GamV.eu">Games</a>'); ///
+            if (test_adb.offsetHeight === 0) {
+                notify_js.className = 'notify_adblock';
+                if (pjs.sess_adv > 0) notify_js.outerHTML = '<div style="position:fixed;top:30px;left:0;right:0;bottom:30px;background:#fefedd;color:#0000be;opacity:.94;line-height:325%;z-index:99999;"><h2>~ The content can be viewed with Adblock Disabled on this website. ~</h2><h3>- You can use <a href="/forum/">The Forum</a>, it not has anti-Adblock restrictions. -</h3></div>';
+            }
+            document.body.removeChild(test_adb);
+        }, 6000);
+    </script>
+    <script src="js/site.js"></script>
+</body>
+
+</html>
+
+
+<!--<h4>Example SHA1</h4>
+
+<form action='#' method='post'>
+Enter a text:<br/>
+<input type='text' name='strex' id='strex' size='25' /> <input type='button' id='cryptstr' value='Encrypt'/><br/>
+SHA1 hash string:<br/>
+<input type='text' name='strcrypt' id='strcrypt' size='35' />
+</form>
+<script type="text/javascript" src="sha1.js"></script>-->
